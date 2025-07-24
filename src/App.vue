@@ -1,11 +1,16 @@
 <script setup>
 import { RouterView } from "vue-router";
+import Header from "./components/Header.vue";
 </script>
 
 <template>
-  <h1>AAAAAAAAAAAAAA</h1>
+  <Header />
   <RouterView />
-  <h3>HEHEHE</h3>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* .container {
+  display: grid;
+  grid-template-columns: ;
+} */
+</style>
