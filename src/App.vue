@@ -49,18 +49,19 @@ import SideBar from "./components/SideBar.vue";
   height: 100vh;
   width: 60%;
   margin: 0 auto;
-  margin-top: 2rem;
+  margin-top: -2rem;
   margin-bottom: 2rem;
   background-color: white;
-  border: 1px solid #a1a3a5;
+  border: 1px solid #c8cbce;
 }
 .hidden-btn {
-  position: absolute;
+  position: sticky;
   top: 1.5rem;
   left: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: fit-content;
   padding: 1.5rem;
   border-radius: 50%;
   background-color: var(--bg-color-1);

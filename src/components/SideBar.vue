@@ -137,13 +137,21 @@
   justify-content: space-between;
   height: 100%;
   background-color: var(--bg-color);
-  padding: 1rem;
+  padding: 1rem 0.5rem;
 }
 .contacts-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
   list-style: none;
 }
 .contacts-list li {
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: fit-content;
+  border-radius: 50%;
+  padding: 1rem;
 }
 </style>

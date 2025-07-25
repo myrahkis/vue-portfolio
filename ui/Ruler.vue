@@ -14,6 +14,7 @@ const { rotate } = defineProps({ rotate: Boolean });
 
 <style scoped>
 .ruler-container {
+  position: relative;
   width: 100%;
   border-bottom: 1px solid var(--text-color-1);
   mask-image: linear-gradient(
