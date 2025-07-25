@@ -34,6 +34,8 @@ html {
 }
 
 body {
+  overflow: hidden;
   font-weight: 500;
   font-size: var(--base-font-size);
+  background-color: var(--bg-color);
 }

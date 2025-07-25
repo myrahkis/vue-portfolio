@@ -3,13 +3,13 @@ const { rotate } = defineProps({ rotate: Boolean });
 </script>
 
 <template>
-  <div class="ruler-container" :class="{ vertical: rotate }">
+  <aside class="ruler-container" :class="{ vertical: rotate }">
     <div class="ruler" :class="{ vertical: rotate }">
       <div class="labels">
         <span v-for="index in 40" :key="index" :style="{ '--i': index }"></span>
       </div>
     </div>
-  </div>
+  </aside>
 </template>
 
 <style scoped>
@@ -104,11 +104,13 @@ const { rotate } = defineProps({ rotate: Boolean });
 }
 
 .ruler-container.vertical {
-  position: fixed;
+  /* position: fixed;
   top: 15rem;
-  left: 0;
+  left: 0; */
+  grid-column: 1 / 2;
+  grid-row: 2;
   width: 2rem;
-  height: 80vh;
+  /* height: 80vh; */
   border-bottom: none;
   border-right: 1px solid var(--text-color-1);
   mask-image: linear-gradient(
