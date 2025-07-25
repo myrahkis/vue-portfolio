@@ -1,5 +1,6 @@
 <script setup>
 import { onBeforeUnmount, onMounted } from "vue";
+import Ruler from "../../ui/Ruler.vue";
 
 function updateSideHeaderOffset() {
   const topHeader = document.querySelector(".top-header");
@@ -31,9 +32,10 @@ onBeforeUnmount(() => {
           <img class="doc-icon" src="" alt="" />
           <p>Doc Name</p>
           <ul class="nav">
-            <!-- выбор темы, языка?, поделиться, удалить?, информация -->
+            <!-- выбор темы, языка?, поделиться, удалить disabled?, информация -->
             <li>Файл</li>
-            <li>Проекты</li>
+            <!-- проекты -->
+            <li>Вставка</li>
             <!-- статистика, цитаты?, быстрые клавиши? -->
             <li>Инструменты</li>
             <!-- накладывать фильтр на страницу? -->
@@ -66,7 +68,9 @@ onBeforeUnmount(() => {
         <div class="drop-down-text-color">Text color</div>
         <div class="drop-down-bg-text-color">Bg text color</div>
       </div>
+      <Ruler :rotate="false" />
     </div>
+    <Ruler :rotate="true" />
     <div class="side-header">
       <ul class="contacts-list">
         <li>тг</li>
@@ -106,16 +110,6 @@ onBeforeUnmount(() => {
   list-style: none;
   gap: 0.2rem;
 }
-.nav li {
-  cursor: pointer;
-  padding: 0.5rem 0.8rem;
-  border-radius: 0.4rem;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: var(--tools-hover-color);
-  }
-}
 
 .doc-tools-container {
   display: flex;
@@ -127,16 +121,6 @@ onBeforeUnmount(() => {
   border-radius: 2rem;
   margin-bottom: 1rem;
 }
-.doc-tools-container div {
-  cursor: pointer;
-  padding: 0.5rem 0.8rem;
-  border-radius: 0.4rem;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: var(--tools-hover-color);
-  }
-}
 
 .side-header {
   position: fixed;
@@ -147,5 +131,18 @@ onBeforeUnmount(() => {
 }
 .contacts-list {
   list-style: none;
+}
+
+.nav li,
+.doc-tools-container div,
+.contacts-list li {
+  cursor: pointer;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.4rem;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--tools-hover-color);
+  }
 }
 </style>
