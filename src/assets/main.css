@@ -39,3 +39,20 @@ body {
   font-size: var(--base-font-size);
   background-color: var(--bg-color);
 }
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.u-tools-hover {
+  cursor: pointer;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.4rem;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--tools-hover-color);
+  }
+}

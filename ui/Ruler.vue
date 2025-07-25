@@ -104,13 +104,9 @@ const { rotate } = defineProps({ rotate: Boolean });
 }
 
 .ruler-container.vertical {
-  /* position: fixed;
-  top: 15rem;
-  left: 0; */
   grid-column: 1 / 2;
   grid-row: 2;
   width: 2rem;
-  /* height: 80vh; */
   border-bottom: none;
   border-right: 1px solid var(--text-color-1);
   mask-image: linear-gradient(
@@ -130,9 +126,6 @@ const { rotate } = defineProps({ rotate: Boolean });
 }
 
 .ruler.vertical {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   margin: 0;

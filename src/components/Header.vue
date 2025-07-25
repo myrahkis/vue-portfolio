@@ -1,27 +1,5 @@
 <script setup>
-// import { onBeforeUnmount, onMounted } from "vue";
 import Ruler from "../../ui/Ruler.vue";
-
-// function updateSideHeaderOffset() {
-//   const topHeader = document.querySelector(".top-header");
-//   const sideHeader = document.querySelector(".side-header");
-
-//   if (!topHeader || !sideHeader) return;
-
-//   const h = topHeader.getBoundingClientRect().height;
-//   sideHeader.style.top = `${h}px`;
-//   sideHeader.style.height = `calc(100% - ${h}px)`;
-// }
-
-// onMounted(() => {
-//   updateSideHeaderOffset();
-//   window.addEventListener("load", updateSideHeaderOffset);
-//   window.addEventListener("resize", updateSideHeaderOffset);
-// });
-// onBeforeUnmount(() => {
-//   window.addEventListener("load", updateSideHeaderOffset);
-//   window.removeEventListener("resize", updateSideHeaderOffset);
-// });
 </script>
 
 <template>
@@ -32,14 +10,14 @@ import Ruler from "../../ui/Ruler.vue";
         <p>Doc Name</p>
         <ul class="nav">
           <!-- выбор темы, языка?, поделиться, удалить disabled?, информация -->
-          <li>Файл</li>
+          <li class="u-tools-hover">Файл</li>
           <!-- проекты -->
-          <li>Вставка</li>
+          <li class="u-tools-hover">Вставка</li>
           <!-- статистика, цитаты?, быстрые клавиши? -->
-          <li>Инструменты</li>
+          <li class="u-tools-hover">Инструменты</li>
           <!-- накладывать фильтр на страницу? -->
-          <li>Расширения?</li>
-          <li>Справка</li>
+          <li class="u-tools-hover">Расширения?</li>
+          <li class="u-tools-hover">Справка</li>
         </ul>
       </div>
       <div>
@@ -54,18 +32,18 @@ import Ruler from "../../ui/Ruler.vue";
     </div>
     <div class="doc-tools-container">
       <div>
-        <button class="cancel-btn"><-</button>
-        <button class="repeat-btn">-></button>
+        <button class="cancel-btn u-tools-hover"><-</button>
+        <button class="repeat-btn u-tools-hover">-></button>
       </div>
-      <div class="drop-down-width">Width</div>
-      <div class="drop-down-font">Font</div>
+      <div class="drop-down-width u-tools-hover">Width</div>
+      <div class="drop-down-font u-tools-hover">Font</div>
       <div>
-        <button class="less-btn">-</button>
+        <button class="less-btn u-tools-hover">-</button>
         <span>кегель</span>
-        <button class="more-btn">+</button>
+        <button class="more-btn u-tools-hover">+</button>
       </div>
-      <div class="drop-down-text-color">Text color</div>
-      <div class="drop-down-bg-text-color">Bg text color</div>
+      <div class="drop-down-text-color u-tools-hover">Text color</div>
+      <div class="drop-down-bg-text-color u-tools-hover">Bg text color</div>
     </div>
     <Ruler :rotate="false" />
 
@@ -79,9 +57,6 @@ import Ruler from "../../ui/Ruler.vue";
 
 <style scoped>
 .header {
-  /* position: fixed;
-  top: 0;
-  left: 0; */
   grid-column: 1 / -1;
   grid-row: 1;
   display: flex;
@@ -111,18 +86,5 @@ import Ruler from "../../ui/Ruler.vue";
   padding: 0.5rem 1.5rem;
   border-radius: 2rem;
   margin-bottom: 1rem;
-}
-
-.nav li,
-.doc-tools-container div,
-.contacts-list li {
-  cursor: pointer;
-  padding: 0.5rem 0.8rem;
-  border-radius: 0.4rem;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: var(--tools-hover-color);
-  }
 }
 </style>
