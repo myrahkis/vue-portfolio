@@ -6,4 +6,8 @@
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+.home-section {
+  height: 100vh;
+}
+</style>
