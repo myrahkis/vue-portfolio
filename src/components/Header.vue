@@ -1,9 +1,9 @@
 <script setup>
+import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useDocNameStore } from "@/stores/docNameStore";
 import Ruler from "../../ui/Ruler.vue";
 import DropDownMenus from "./DropDownMenus.vue";
-import { onMounted } from "vue";
 
 const route = useRoute();
 const docNameStore = useDocNameStore();

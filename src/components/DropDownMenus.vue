@@ -59,27 +59,32 @@ function openHandle(idx) {
   }
 }
 
-function onLinkClick(link) {
-  if (link.to) {
-    router.push(link.to);
-    dropDownOpen.value = false;
-    openedIdx.value = null;
+async function onLinkClick(link) {
+  if (typeof link.action !== "function") {
     return;
   }
 
-  if (typeof link.action === "function") {
-    link.action();
-    return;
-  }
+  dropDownOpen.value = false;
+  openedIdx.value = null;
 
-  console.warn("Неизвестный тип действия для пункта меню", link);
+  try {
+    await link.action();
+  } catch (err) {
+    console.error("Ошибка при выполнении меню–действия:", err);
+  }
 }
 
 function changeLangHandle() {
   return;
 }
-function copyLinkHandle() {
-  return;
+async function copyLinkHandle() {
+  try {
+    const url = window.location.href;
+    await navigator.clipboard.writeText(url);
+    alert("Ссылка скопирована!!")
+  } catch (err) {
+    console.error("Ошибка при копировании:", err);
+  }
 }
 function deleteHandle() {
   return;
