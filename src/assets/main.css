@@ -2,19 +2,33 @@
 
 :root {
   --light-blue-color: #c2e7ff;
-  --main-color: #0b57d0;
+  --light-blue-hover: #b2d7ef;
+  --dark-blue-text: #05223a;
   --bg-color: #f9fbfd;
   --bg-color-1: #f0f4f9;
   --text-color: #202124;
   --text-color-1: #000000b3;
   --tools-hover-color: #e8ebee;
+  --white: #ffffff;
+  --menu-shadow-color: #cacdd2;
+  --menu-text-color: #202124;
   --base-font-size: 1.5rem;
-}
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
+  &.dark-mode {
+    --light-blue-color: #1e3a52;
+    --light-blue-hover: #243a4b;
+    --dark-blue-text: #7fbfdc;
+    --bg-color: #2a2832;
+    --bg-color-1: #383640;
+    --text-color: #f5f5f9;
+    --text-color-1: #ffffffff;
+    --white: #e0e0e0;
+    --menu-text-color: #202124;
+    --tools-hover-color: #4a4a5c;
+    --menu-shadow-color: rgba(0, 0, 0, 0.5);
+    --base-font-size: 1.5rem;
   }
-} */
+}
 
 *,
 *::before,

@@ -404,18 +404,18 @@ import DropDownMenus from "./DropDownMenus.vue";
   display: flex;
   align-items: center;
   gap: 1rem;
-  background-color: #c2e7ff;
+  background-color: var(--light-blue-color);
   padding: 1rem 2rem;
   border-radius: 3.5rem;
   transition: background-color 0.2s;
 
   p {
     font-weight: 600;
-    color: #05223a;
+    color: var(--dark-blue-text);
   }
 
   &:hover {
-    background-color: #b2d7ef;
+    background-color: var(--light-blue-hover);
   }
 }
 .user-ava {

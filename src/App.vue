@@ -51,7 +51,7 @@ import SideBar from "./components/SideBar.vue";
   margin: 0 auto;
   margin-top: -2rem;
   margin-bottom: 2rem;
-  background-color: white;
+  background-color: var(--white);
   border: 1px solid #c8cbce;
 }
 .hidden-btn {

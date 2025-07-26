@@ -1,13 +1,23 @@
 <script setup>
+import router from "@/router";
 import { ref } from "vue";
+import { useDarkThemeStore } from "@/stores/darkThemeStore";
 
 const dropDownOpen = ref(false);
 const openedIdx = ref(null);
 
+const darkThemeStore = useDarkThemeStore();
+
 const menusBtns = [
   {
     name: "Файл",
-    links: ["Тема сайта", "Язык", "Поделиться", "Удалить сайт", "Информация"],
+    links: [
+      { name: "Тема сайта", action: darkThemeStore.toggleDarkTheme },
+      { name: "Язык", action: changeLangHandle },
+      { name: "Поделиться", action: copyLinkHandle },
+      { name: "Удалить сайт", action: deleteHandle },
+      { name: "Информация", action: toggleSiteInfo },
+    ],
   },
   {
     name: "Вставка",
@@ -20,11 +30,18 @@ const menusBtns = [
   },
   {
     name: "Инструменты",
-    links: ["Статистика", "Цитаты?", "Быстрые клавиши?"],
+    links: [
+      { name: "Статистика", action: toggleStats },
+      { name: "Цитаты?", action: toggleQuots },
+      { name: "Быстрые клавиши?", action: toggleShortcuts },
+    ],
   },
   {
     name: "Расширения?",
-    links: ["Сепия", "ЧБ", "???"],
+    links: [
+      { name: "Сепия", action: sepiaHandle },
+      { name: "ЧБ", action: bwHandle },
+    ],
   },
   {
     name: "Справка",
@@ -41,6 +58,50 @@ function openHandle(idx) {
     dropDownOpen.value = true;
   }
 }
+
+function onLinkClick(link) {
+  if (link.to) {
+    router.push(link.to);
+    dropDownOpen.value = false;
+    openedIdx.value = null;
+    return;
+  }
+
+  if (typeof link.action === "function") {
+    link.action();
+    return;
+  }
+
+  console.warn("Неизвестный тип действия для пункта меню", link);
+}
+
+function changeLangHandle() {
+  return;
+}
+function copyLinkHandle() {
+  return;
+}
+function deleteHandle() {
+  return;
+}
+function toggleSiteInfo() {
+  return;
+}
+function toggleStats() {
+  return;
+}
+function toggleQuots() {
+  return;
+}
+function toggleShortcuts() {
+  return;
+}
+function sepiaHandle() {
+  return;
+}
+function bwHandle() {
+  return;
+}
 </script>
 
 <template>
@@ -55,14 +116,14 @@ function openHandle(idx) {
         {{ btn.name }}
       </button>
       <ul v-if="index === openedIdx && dropDownOpen" class="submenu">
-        <router-link
+        <li
           v-for="(link, index) in btn.links"
           :key="index"
           class="link-item"
-          :to="link?.to"
-          tag="li"
-          >{{ link?.name || link }}</router-link
+          @click.stop="onLinkClick(link)"
         >
+          {{ link.name }}
+        </li>
       </ul>
     </li>
   </ul>
@@ -86,8 +147,8 @@ function openHandle(idx) {
   display: flex;
   flex-direction: column;
   width: max-content;
-  background-color: white;
-  box-shadow: 0 0 1rem #cacdd2;
+  background-color: var(--white);
+  box-shadow: 0 0 1rem var(--menu-shadow-color);
   padding: 0.5rem 0;
   border-radius: 0.5rem;
 }
@@ -96,8 +157,8 @@ function openHandle(idx) {
   cursor: pointer;
   padding: 0.8rem 1.5rem;
   text-decoration: none;
-  color: var(--text-color);
-  transition: background-color 0.2s;
+  color: var(--menu-text-color);
+  transition: all 0.2s;
 
   &:not(:last-child) {
     border-bottom: 1px solid var(--bg-color-1);
@@ -105,6 +166,10 @@ function openHandle(idx) {
 
   &:hover {
     background-color: var(--tools-hover-color);
+    color: var(--text-color);
   }
+}
+.menu-btn {
+  color: var(--text-color);
 }
 </style>
