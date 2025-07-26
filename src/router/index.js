@@ -1,13 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";
 import AboutMeView from "@/views/AboutMeView.vue";
+import Home from "@/views/Home.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
-      name: "about-me",
-      component: AboutMeView,
+      name: "home",
+      component: Home,
     },
     {
       path: "/simples",
@@ -28,6 +29,11 @@ const router = createRouter({
       path: "/friendly-poker-club",
       name: "friendly-poker-club",
       component: () => import("../views/FriendlyPokerClubView.vue"),
+    },
+    {
+      path: "/about-me",
+      name: "about-me",
+      component: () => import("../views/AboutMeView.vue"),
     },
   ],
 });

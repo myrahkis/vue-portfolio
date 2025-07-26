@@ -11,7 +11,12 @@ const menusBtns = [
   },
   {
     name: "Вставка",
-    links: ["Simples", "Chat", "Cyclone", "FriendlyPokerClub"],
+    links: [
+      { name: "Simples", to: "/simples" },
+      { name: "Chat", to: "/ws-chat" },
+      { name: "Cyclone", to: "/cyclone" },
+      { name: "FriendlyPokerClub", to: "/friendly-poker-club" },
+    ],
   },
   {
     name: "Инструменты",
@@ -23,7 +28,7 @@ const menusBtns = [
   },
   {
     name: "Справка",
-    links: ["Обо мне"],
+    links: [{ name: "Обо мне", to: "/about-me" }],
   },
 ];
 
@@ -50,9 +55,14 @@ function openHandle(idx) {
         {{ btn.name }}
       </button>
       <ul v-if="index === openedIdx && dropDownOpen" class="submenu">
-        <li v-for="(link, index) in btn.links" :key="index" class="link-item">
-          {{ link }}
-        </li>
+        <router-link
+          v-for="(link, index) in btn.links"
+          :key="index"
+          class="link-item"
+          :to="link?.to"
+          tag="li"
+          >{{ link?.name || link }}</router-link
+        >
       </ul>
     </li>
   </ul>
@@ -85,6 +95,8 @@ function openHandle(idx) {
 .link-item {
   cursor: pointer;
   padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  color: var(--text-color);
   transition: background-color 0.2s;
 
   &:not(:last-child) {

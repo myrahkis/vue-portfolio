@@ -361,12 +361,6 @@ import DropDownMenus from "./DropDownMenus.vue";
       <div class="drop-down-bg-text-color u-tools-hover">Bg text color</div>
     </div>
     <Ruler :rotate="false" />
-
-    <!-- <router-link to="/">About me</router-link>
-    <router-link to="/simples">Simples</router-link>
-    <router-link to="/ws-chat">WS Chat</router-link>
-    <router-link to="/cyclone">Cyclone</router-link>
-    <router-link to="/friendly-poker-club">FriendlyPokerClub</router-link> -->
   </header>
 </template>
 
