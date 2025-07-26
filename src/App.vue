@@ -51,7 +51,7 @@ const deleteSiteStore = useDeleteSiteStore();
   scrollbar-width: thin;
 }
 .doc {
-  height: 100vh;
+  height: auto;
   width: 60%;
   margin: 0 auto;
   margin-top: -2rem;

@@ -1,8 +1,18 @@
-<script setup></script>
+<script setup>
+import DocLayout from "@/components/DocLayout.vue";
+</script>
 
 <template>
   <section class="simples-section">
-    <h1>Simples</h1>
+    <DocLayout>
+      <template #project>
+        <iframe
+          class="project-preview"
+          src="https://myrahkis.github.io/simples-w-vue/"
+          frameborder="0"
+        ></iframe>
+      </template>
+    </DocLayout>
   </section>
 </template>
 

@@ -2,7 +2,6 @@
 import router from "@/router";
 import { ref } from "vue";
 import { useDarkThemeStore } from "@/stores/darkThemeStore";
-import BlueScreen from "../../ui/BlueScreen.vue";
 import { useDeleteSiteStore } from "@/stores/deleteSiteStore";
 
 const dropDownOpen = ref(false);

@@ -1,12 +1,16 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { useDocNameStore } from "@/stores/docNameStore";
+import { useFontsStore } from "@/stores/fontsStore";
 import Ruler from "../../ui/Ruler.vue";
 import DropDownMenus from "./DropDownMenus.vue";
 
 const route = useRoute();
 const docNameStore = useDocNameStore();
+const fontsStore = useFontsStore();
+
+const isFontsOpen = ref(false);
 
 onMounted(() => {
   if (route.name) {
@@ -278,7 +282,17 @@ onMounted(() => {
         </button>
       </div>
       <div class="drop-down-width u-tools-hover">Width</div>
-      <div class="drop-down-font u-tools-hover">Font</div>
+      <div class="drop-down-font u-tools-hover">
+        <select @change="fontsStore.selectFont($event.target.value)">
+          <option
+            v-for="(font, index) in fontsStore.fontsFamilies"
+            :key="index"
+            :value="font.family"
+          >
+            {{ font.name }}
+          </option>
+        </select>
+      </div>
       <div class="font-size-selector">
         <button class="less-btn u-tools-hover">
           <svg
