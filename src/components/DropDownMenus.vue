@@ -2,11 +2,14 @@
 import router from "@/router";
 import { ref } from "vue";
 import { useDarkThemeStore } from "@/stores/darkThemeStore";
+import BlueScreen from "../../ui/BlueScreen.vue";
+import { useDeleteSiteStore } from "@/stores/deleteSiteStore";
 
 const dropDownOpen = ref(false);
 const openedIdx = ref(null);
 
 const darkThemeStore = useDarkThemeStore();
+const deleteSiteStore = useDeleteSiteStore();
 
 const menusBtns = [
   {
@@ -15,7 +18,7 @@ const menusBtns = [
       { name: "Тема сайта", action: darkThemeStore.toggleDarkTheme },
       { name: "Язык", action: changeLangHandle },
       { name: "Поделиться", action: copyLinkHandle },
-      { name: "Удалить сайт", action: deleteHandle },
+      { name: "Удалить сайт", action: deleteSiteStore.deleteHandle },
       { name: "Информация", action: toggleSiteInfo },
     ],
   },
@@ -60,6 +63,13 @@ function openHandle(idx) {
 }
 
 async function onLinkClick(link) {
+  if (link.to) {
+    router.push(link.to);
+    dropDownOpen.value = false;
+    openedIdx.value = null;
+    return;
+  }
+
   if (typeof link.action !== "function") {
     return;
   }
@@ -81,14 +91,12 @@ async function copyLinkHandle() {
   try {
     const url = window.location.href;
     await navigator.clipboard.writeText(url);
-    alert("Ссылка скопирована!!")
+    alert("Ссылка скопирована!!");
   } catch (err) {
     console.error("Ошибка при копировании:", err);
   }
 }
-function deleteHandle() {
-  return;
-}
+
 function toggleSiteInfo() {
   return;
 }

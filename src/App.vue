@@ -1,10 +1,15 @@
 <script setup>
+import { useDeleteSiteStore } from "./stores/deleteSiteStore";
+import BlueScreen from "../ui/BlueScreen.vue";
 import Ruler from "../ui/Ruler.vue";
 import Header from "./components/Header.vue";
 import SideBar from "./components/SideBar.vue";
+
+const deleteSiteStore = useDeleteSiteStore();
 </script>
 
 <template>
+  <BlueScreen v-if="deleteSiteStore.isSiteDeleted" />
   <div class="layout-grid">
     <Header />
     <Ruler :rotate="true" />
@@ -31,7 +36,7 @@ import SideBar from "./components/SideBar.vue";
   </div>
 </template>
 
-<style scoped>
+<style>
 .layout-grid {
   display: grid;
   grid-template-columns: 2rem auto 8rem;
