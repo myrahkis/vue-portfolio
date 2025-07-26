@@ -1,0 +1,1 @@
+import{D as o}from"./DocLayout-DnFONT6p.js";import{c as t,a as r,w as s,o as c,b as a}from"./index-DCk4Zbtc.js";const n={class:"cyclone-section"},_={__name:"CycloneView",setup(l){return(p,e)=>(c(),t("section",n,[r(o,null,{project:s(()=>e[0]||(e[0]=[a("iframe",{class:"project-preview",src:"https://cyclon.pro",frameborder:"0"},null,-1)])),_:1})]))}};export{_ as default};

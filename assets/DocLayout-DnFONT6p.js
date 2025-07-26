@@ -1,0 +1,1 @@
+import{_ as r,c as t,b as o,r as c,o as n}from"./index-DCk4Zbtc.js";const a={},_={class:"inner-doc-wrapper"},d={class:"project-preview"};function i(s,e){return n(),t("div",_,[o("div",d,[e[0]||(e[0]=o("h1",null,"Проект такой то такой то",-1)),c(s.$slots,"project")])])}const p=r(a,[["render",i]]);export{p as D};
