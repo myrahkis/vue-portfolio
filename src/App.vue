@@ -19,7 +19,7 @@ import SideBar from "./components/SideBar.vue";
           version="1.1"
         >
           <path
-            fill="#48494a"
+            fill="currentColor"
             d="M 16 2 v 2 h -11 v -2 h 11 Z M 5 9 h 11 v -2 h -11 v 2 Z M 5 14 h 11 v -2 h -11 v 2 Z M 2 2 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 7 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 12 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z"
           />
         </svg>
@@ -66,6 +66,10 @@ import SideBar from "./components/SideBar.vue";
   border-radius: 50%;
   background-color: var(--bg-color-1);
   transition: background-color 0.2s;
+
+  svg {
+    color: var(--icons-color);
+  }
 
   &:hover {
     background-color: var(--tools-hover-color);

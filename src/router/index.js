@@ -7,32 +7,32 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "Vue портфолио",
       component: Home,
     },
     {
       path: "/simples",
-      name: "simples",
+      name: "Simples",
       component: () => import("../views/SimplesView.vue"),
     },
     {
       path: "/ws-chat",
-      name: "ws-chat",
+      name: "Chat",
       component: () => import("../views/ChatView.vue"),
     },
     {
       path: "/cyclone",
-      name: "cyclone",
+      name: "Cyclone",
       component: () => import("../views/CycloneView.vue"),
     },
     {
       path: "/friendly-poker-club",
-      name: "friendly-poker-club",
+      name: "Friendly Poker Club",
       component: () => import("../views/FriendlyPokerClubView.vue"),
     },
     {
       path: "/about-me",
-      name: "about-me",
+      name: "Обо мне",
       component: () => import("../views/AboutMeView.vue"),
     },
   ],

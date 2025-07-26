@@ -13,7 +13,8 @@
         >
           <circle fill="url(#paint0_linear_87_7225)" cx="16" cy="16" r="14" />
           <path
-            fill="white"
+            fill="currentColor"
+            class="accent-shape"
             d="M 22.9866 10.2088 C 23.1112 9.40332 22.3454 8.76755 21.6292 9.082 L 7.36482 15.3448 C 6.85123 15.5703 6.8888 16.3483 7.42147 16.5179 L 10.3631 17.4547 C 10.9246 17.6335 11.5325 17.541 12.0228 17.2023 L 18.655 12.6203 C 18.855 12.4821 19.073 12.7665 18.9021 12.9426 L 14.1281 17.8646 C 13.665 18.3421 13.7569 19.1512 14.314 19.5005 L 19.659 22.8523 C 20.2585 23.2282 21.0297 22.8506 21.1418 22.1261 L 22.9866 10.2088 Z"
           />
           <defs>
@@ -25,8 +26,8 @@
               x2="16"
               y2="30"
             >
-              <stop stop-color="#48494a" />
-              <stop stop-color="#48494a" offset="1" />
+              <stop stop-color="currentColor" />
+              <stop stop-color="currentColor" offset="1" />
             </linearGradient>
           </defs>
         </svg>
@@ -51,7 +52,7 @@
           >
             <g
               id="Dribbble-Light-Preview"
-              fill="#48494a"
+              fill="currentColor"
               transform="translate(-140 -7559)"
             >
               <g id="icons" transform="translate(56 160)">
@@ -73,13 +74,13 @@
           height="3.5rem"
         >
           <path
-            stroke="#48494a"
+            stroke="currentColor"
             stroke-linejoin="round"
             stroke-width="12"
             d="M 22 46 h 148 v 100 H 22 Z"
           />
           <path
-            stroke="#48494a"
+            stroke="currentColor"
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="12"
@@ -87,7 +88,7 @@
           />
           <path
             clip-rule="evenodd"
-            fill="#48494a"
+            fill="currentColor"
             fill-rule="evenodd"
             d="m 116.531 99.263 l 43.226 43.226 a 6 6 0 1 0 8.486 -8.485 L 125.239 91 l -8.708 8.263 Z m -46.213 -7.82 l -42.56 42.561 a 6 6 0 1 0 8.485 8.485 l 42.3 -42.301 l -8.225 -8.745 Z"
           />
@@ -102,7 +103,7 @@
           height="3.5rem"
         >
           <path
-            stroke="#48494a"
+            stroke="currentColor"
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
@@ -120,7 +121,7 @@
         height="3rem"
       >
         <path
-          fill="#48494a"
+          fill="currentColor"
           d="M 9.71069 18.2929 C 10.1012 18.6834 10.7344 18.6834 11.1249 18.2929 L 16.0123 13.4006 C 16.7927 12.6195 16.7924 11.3537 16.0117 10.5729 L 11.1213 5.68254 C 10.7308 5.29202 10.0976 5.29202 9.70708 5.68254 C 9.31655 6.07307 9.31655 6.70623 9.70708 7.09676 L 13.8927 11.2824 C 14.2833 11.6729 14.2833 12.3061 13.8927 12.6966 L 9.71069 16.8787 C 9.32016 17.2692 9.32016 17.9023 9.71069 18.2929 Z"
         />
       </svg>
@@ -153,5 +154,15 @@
   width: fit-content;
   border-radius: 50%;
   padding: 1rem;
+}
+
+.u-tools-hover {
+  svg {
+    color: var(--icons-color);
+  }
+
+  svg path.accent-shape {
+    color: var(--bg-color);
+  }
 }
 </style>

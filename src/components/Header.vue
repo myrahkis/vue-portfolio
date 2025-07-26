@@ -1,6 +1,18 @@
 <script setup>
+import { useRoute } from "vue-router";
+import { useDocNameStore } from "@/stores/docNameStore";
 import Ruler from "../../ui/Ruler.vue";
 import DropDownMenus from "./DropDownMenus.vue";
+import { onMounted } from "vue";
+
+const route = useRoute();
+const docNameStore = useDocNameStore();
+
+onMounted(() => {
+  if (route.name) {
+    docNameStore.setDocName(route.name.toString());
+  }
+});
 </script>
 
 <template>
@@ -9,54 +21,52 @@ import DropDownMenus from "./DropDownMenus.vue";
       <div class="nav-wrapper">
         <img class="doc-icon" src="/src/assets/logo-doc.png" alt="" />
         <div>
-          <p class="doc-name">Doc Name</p>
+          <p class="doc-name">{{ docNameStore.docName }}</p>
           <DropDownMenus />
         </div>
       </div>
       <div class="user-info-container">
         <div class="user-name">
-          <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="#05223a"
-              stroke="#05223a"
-              viewBox="0 0 24 24"
-              width="2.2rem"
-              height="2.2rem"
-              version="1.1"
-            >
-              <g id="SVGRepo_bgCarrier" stroke-width="0" />
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke="#cccccc"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="0.288"
-              />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            width="2.2rem"
+            height="2.2rem"
+            version="1.1"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="0.288"
+            />
 
-              <g id="SVGRepo_iconCarrier">
-                <title>ic_fluent_lock_24_regular</title>
-                <desc>Created with Sketch.</desc>
+            <g id="SVGRepo_iconCarrier">
+              <title>ic_fluent_lock_24_regular</title>
+              <desc>Created with Sketch.</desc>
+              <g
+                id="🔍-Product-Icons"
+                fill="none"
+                fill-rule="evenodd"
+                stroke-width="0.432"
+              >
                 <g
-                  id="🔍-Product-Icons"
-                  fill="none"
-                  fill-rule="evenodd"
-                  stroke-width="0.432"
+                  id="ic_fluent_lock_24_regular"
+                  fill="currentColor"
+                  fill-rule="nonzero"
                 >
-                  <g
-                    id="ic_fluent_lock_24_regular"
-                    fill="#202124"
-                    fill-rule="nonzero"
-                  >
-                    <path
-                      id="🎨-Color"
-                      d="M 12 2 C 14.2091 2 16 3.79086 16 6 L 16 8 L 17.75 8 C 18.9926 8 20 9.00736 20 10.25 L 20 19.75 C 20 20.9926 18.9926 22 17.75 22 L 6.25 22 C 5.00736 22 4 20.9926 4 19.75 L 4 10.25 C 4 9.00736 5.00736 8 6.25 8 L 8 8 L 8 6 C 8 3.79086 9.79086 2 12 2 Z M 17.75 9.5 L 6.25 9.5 C 5.83579 9.5 5.5 9.83579 5.5 10.25 L 5.5 19.75 C 5.5 20.1642 5.83579 20.5 6.25 20.5 L 17.75 20.5 C 18.1642 20.5 18.5 20.1642 18.5 19.75 L 18.5 10.25 C 18.5 9.83579 18.1642 9.5 17.75 9.5 Z M 12.0001 13.5 C 12.8286 13.5 13.5001 14.1716 13.5001 15 C 13.5001 15.8284 12.8286 16.5 12.0001 16.5 C 11.1717 16.5 10.5001 15.8284 10.5001 15 C 10.5001 14.1716 11.1717 13.5 12.0001 13.5 Z M 12 3.5 C 10.6193 3.5 9.5 4.61929 9.5 6 L 9.5 8 L 14.5 8 L 14.5 6 C 14.5 4.61929 13.3807 3.5 12 3.5 Z"
-                    ></path>
-                  </g>
+                  <path
+                    id="🎨-Color"
+                    d="M 12 2 C 14.2091 2 16 3.79086 16 6 L 16 8 L 17.75 8 C 18.9926 8 20 9.00736 20 10.25 L 20 19.75 C 20 20.9926 18.9926 22 17.75 22 L 6.25 22 C 5.00736 22 4 20.9926 4 19.75 L 4 10.25 C 4 9.00736 5.00736 8 6.25 8 L 8 8 L 8 6 C 8 3.79086 9.79086 2 12 2 Z M 17.75 9.5 L 6.25 9.5 C 5.83579 9.5 5.5 9.83579 5.5 10.25 L 5.5 19.75 C 5.5 20.1642 5.83579 20.5 6.25 20.5 L 17.75 20.5 C 18.1642 20.5 18.5 20.1642 18.5 19.75 L 18.5 10.25 C 18.5 9.83579 18.1642 9.5 17.75 9.5 Z M 12.0001 13.5 C 12.8286 13.5 13.5001 14.1716 13.5001 15 C 13.5001 15.8284 12.8286 16.5 12.0001 16.5 C 11.1717 16.5 10.5001 15.8284 10.5001 15 C 10.5001 14.1716 11.1717 13.5 12.0001 13.5 Z M 12 3.5 C 10.6193 3.5 9.5 4.61929 9.5 6 L 9.5 8 L 14.5 8 L 14.5 6 C 14.5 4.61929 13.3807 3.5 12 3.5 Z"
+                  ></path>
                 </g>
               </g>
-            </svg>
-          </span>
+            </g>
+          </svg>
           <p>Работодатель</p>
         </div>
         <div class="user-ava">
@@ -217,7 +227,7 @@ import DropDownMenus from "./DropDownMenus.vue";
         <button class="cancel-btn u-tools-hover">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="#48494a"
+            fill="currentColor"
             viewBox="0 0 24 24"
             width="1.5rem"
             height="1.5rem"
@@ -243,7 +253,7 @@ import DropDownMenus from "./DropDownMenus.vue";
         <button class="repeat-btn u-tools-hover">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="#48494a"
+            fill="currentColor"
             viewBox="0 0 24 24"
             width="1.5rem"
             height="1.5rem"
@@ -273,7 +283,7 @@ import DropDownMenus from "./DropDownMenus.vue";
         <button class="less-btn u-tools-hover">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="#48494a"
+            fill="currentColor"
             viewBox="0 0 24 24"
             width="1.8rem"
             height="1.8rem"
@@ -292,7 +302,7 @@ import DropDownMenus from "./DropDownMenus.vue";
                 <g id="minus">
                   <line
                     fill="none"
-                    stroke="#48494a"
+                    stroke="currentColor"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
@@ -310,7 +320,7 @@ import DropDownMenus from "./DropDownMenus.vue";
         <button class="more-btn u-tools-hover">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="#48494a"
+            fill="currentColor"
             viewBox="0 0 24 24"
             width="1.8rem"
             height="1.8rem"
@@ -330,7 +340,7 @@ import DropDownMenus from "./DropDownMenus.vue";
                   <g>
                     <line
                       fill="none"
-                      stroke="#48494a"
+                      stroke="currentColor"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
@@ -341,7 +351,7 @@ import DropDownMenus from "./DropDownMenus.vue";
                     />
                     <line
                       fill="none"
-                      stroke="#48494a"
+                      stroke="currentColor"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
@@ -414,6 +424,11 @@ import DropDownMenus from "./DropDownMenus.vue";
     color: var(--dark-blue-text);
   }
 
+  svg {
+    color: var(--dark-blue-text);
+    stroke: var(--dark-blue-text);
+  }
+
   &:hover {
     background-color: var(--light-blue-hover);
   }
@@ -449,6 +464,15 @@ import DropDownMenus from "./DropDownMenus.vue";
   svg {
     display: flex;
     align-items: center;
+  }
+}
+
+.cancel-btn,
+.repeat-btn,
+.less-btn,
+.more-btn {
+  svg {
+    color: var(--icons-color);
   }
 }
 </style>
