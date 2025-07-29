@@ -3,14 +3,21 @@ import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { useDocNameStore } from "@/stores/docNameStore";
 import { useFontsStore } from "@/stores/fontsStore";
+import { useWidthStore } from "@/stores/widthStore";
 import Ruler from "../../ui/Ruler.vue";
 import DropDownMenus from "./DropDownMenus.vue";
+import DropDownMenu from "../../ui/DropDownMenu.vue";
 
 const route = useRoute();
 const docNameStore = useDocNameStore();
 const fontsStore = useFontsStore();
+const widthsStore = useWidthStore();
 
-const isFontsOpen = ref(false);
+const activeIndex = ref(null);
+
+function handleToggle(idx) {
+  activeIndex.value = activeIndex.value === idx ? null : idx;
+}
 
 onMounted(() => {
   if (route.name) {
@@ -281,17 +288,25 @@ onMounted(() => {
           </svg>
         </button>
       </div>
-      <div class="drop-down-width u-tools-hover">Width</div>
+      <div class="drop-down-width u-tools-hover">
+        <DropDownMenu
+          :index="1"
+          :open="activeIndex === 1"
+          @toggle="handleToggle"
+          v-model="widthsStore.selectedWidth"
+          :options="widthsStore.options"
+        />
+      </div>
       <div class="drop-down-font u-tools-hover">
-        <select @change="fontsStore.selectFont($event.target.value)">
-          <option
-            v-for="(font, index) in fontsStore.fontsFamilies"
-            :key="index"
-            :value="font.family"
-          >
-            {{ font.name }}
-          </option>
-        </select>
+        <DropDownMenu
+          :index="2"
+          :open="activeIndex === 2"
+          @toggle="handleToggle"
+          v-model="fontsStore.selectedFont"
+          :options="fontsStore.fontsFamilies"
+          label-key="name"
+          value-key="family"
+        />
       </div>
       <div class="font-size-selector">
         <button class="less-btn u-tools-hover">

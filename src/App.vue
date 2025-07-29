@@ -1,6 +1,7 @@
 <script setup>
 import { useDeleteSiteStore } from "./stores/deleteSiteStore";
 import { useSideBarStore } from "./stores/sideBarStore";
+import { useWidthStore } from "./stores/widthStore";
 import BlueScreen from "../ui/BlueScreen.vue";
 import Ruler from "../ui/Ruler.vue";
 import Header from "./components/Header.vue";
@@ -8,6 +9,7 @@ import SideBar from "./components/SideBar.vue";
 
 const deleteSiteStore = useDeleteSiteStore();
 const sideBarStore = useSideBarStore();
+const widthsStore = useWidthStore();
 </script>
 
 <template>
@@ -53,7 +55,7 @@ const sideBarStore = useSideBarStore();
         </g>
       </svg>
     </button>
-    <main class="doc-container">
+    <main class="main-container">
       <button class="hidden-btn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -68,8 +70,17 @@ const sideBarStore = useSideBarStore();
           />
         </svg>
       </button>
-      <div class="doc">
-        <RouterView />
+      <div class="doc-container">
+        <div
+          class="doc"
+          :style="{
+            width: widthsStore.selectedWidth,
+            transform: `scale(${widthsStore.scale})`,
+            transformOrigin: 'top left',
+          }"
+        >
+          <RouterView />
+        </div>
       </div>
     </main>
   </div>
@@ -78,24 +89,27 @@ const sideBarStore = useSideBarStore();
 <style>
 .layout-grid {
   display: grid;
-  /* grid-template-columns: 2rem auto 8rem; */
   grid-template-rows: 0.23fr auto;
   height: 100vh;
   transition: grid-template-columns 0.3s ease;
 }
-.doc-container {
+.main-container {
   position: relative;
   overflow-y: auto;
   grid-column: 2 / 3;
   grid-row: 2;
   scrollbar-width: thin;
 }
-.doc {
+.doc-container {
   height: auto;
   width: 60%;
   margin: 0 auto;
   margin-top: -2rem;
   margin-bottom: 2rem;
+}
+.doc {
+  /* width: 100%; */
+  margin: 0 auto;
   background-color: var(--white);
   border: 1px solid #c8cbce;
 }
