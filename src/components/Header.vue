@@ -4,6 +4,7 @@ import { useRoute } from "vue-router";
 import { useDocNameStore } from "@/stores/docNameStore";
 import { useFontsStore } from "@/stores/fontsStore";
 import { useWidthStore } from "@/stores/widthStore";
+import { useFontSizeStore } from "@/stores/fontSizeStore";
 import Ruler from "../../ui/Ruler.vue";
 import DropDownMenus from "./DropDownMenus.vue";
 import DropDownMenu from "../../ui/DropDownMenu.vue";
@@ -12,6 +13,7 @@ const route = useRoute();
 const docNameStore = useDocNameStore();
 const fontsStore = useFontsStore();
 const widthsStore = useWidthStore();
+const fontSizeStore = useFontSizeStore();
 
 const activeIndex = ref(null);
 
@@ -309,7 +311,10 @@ onMounted(() => {
         />
       </div>
       <div class="font-size-selector">
-        <button class="less-btn u-tools-hover">
+        <button
+          class="less-btn u-tools-hover"
+          @click="fontSizeStore.decreaseSize"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -345,8 +350,11 @@ onMounted(() => {
             </g>
           </svg>
         </button>
-        <span>10</span>
-        <button class="more-btn u-tools-hover">
+        <span>{{ fontSizeStore.selectedSize }}</span>
+        <button
+          class="more-btn u-tools-hover"
+          @click="fontSizeStore.increaseSize"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"

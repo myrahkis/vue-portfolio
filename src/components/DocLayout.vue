@@ -1,8 +1,15 @@
-<script setup></script>
+<script setup>
+import { useFontSizeStore } from "@/stores/fontSizeStore";
+
+const fontSizeStore = useFontSizeStore();
+</script>
 
 <template>
   <div class="inner-doc-wrapper">
-    <div class="project-preview">
+    <div
+      class="project-preview"
+      :style="{ fontSize: `${fontSizeStore.selectedSize / 10}rem` }"
+    >
       <slot name="project"></slot>
     </div>
   </div>
