@@ -1,19 +1,58 @@
 <script setup>
 import { useDeleteSiteStore } from "./stores/deleteSiteStore";
+import { useSideBarStore } from "./stores/sideBarStore";
 import BlueScreen from "../ui/BlueScreen.vue";
 import Ruler from "../ui/Ruler.vue";
 import Header from "./components/Header.vue";
 import SideBar from "./components/SideBar.vue";
 
 const deleteSiteStore = useDeleteSiteStore();
+const sideBarStore = useSideBarStore();
 </script>
 
 <template>
   <BlueScreen v-if="deleteSiteStore.isSiteDeleted" />
-  <div class="layout-grid">
+  <div
+    class="layout-grid"
+    :style="{
+      gridTemplateColumns: sideBarStore.isSideBarOpen
+        ? '2rem auto 8rem'
+        : '2rem auto 0',
+    }"
+  >
     <Header />
     <Ruler :rotate="true" />
-    <SideBar />
+    <SideBar
+      v-if="sideBarStore.isSideBarOpen"
+      :onClose="sideBarStore.closeSideBar"
+    />
+    <button
+      v-if="!sideBarStore.isSideBarOpen"
+      @click="sideBarStore.openSideBar"
+      class="open-sidebar-btn"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        width="2rem"
+        height="2rem"
+      >
+        <g data-name="Layer 2">
+          <g data-name="arrow-ios-back">
+            <rect
+              opacity="0"
+              transform="rotate(90 12 12)"
+              width="24"
+              height="24"
+            />
+            <path
+              d="M 13.83 19 a 1 1 0 0 1 -0.78 -0.37 l -4.83 -6 a 1 1 0 0 1 0 -1.27 l 5 -6 a 1 1 0 0 1 1.54 1.28 L 10.29 12 l 4.32 5.36 a 1 1 0 0 1 -0.78 1.64 Z"
+            />
+          </g>
+        </g>
+      </svg>
+    </button>
     <main class="doc-container">
       <button class="hidden-btn">
         <svg
@@ -39,9 +78,10 @@ const deleteSiteStore = useDeleteSiteStore();
 <style>
 .layout-grid {
   display: grid;
-  grid-template-columns: 2rem auto 8rem;
+  /* grid-template-columns: 2rem auto 8rem; */
   grid-template-rows: 0.23fr auto;
   height: 100vh;
+  transition: grid-template-columns 0.3s ease;
 }
 .doc-container {
   position: relative;
@@ -78,6 +118,26 @@ const deleteSiteStore = useDeleteSiteStore();
 
   &:hover {
     background-color: var(--tools-hover-color);
+  }
+}
+
+.open-sidebar-btn {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 0;
+  z-index: 10;
+  background-color: var(--white);
+  color: var(--icons-color);
+  padding: 1rem;
+  padding-right: 0.3rem;
+  border-top-left-radius: 3.5rem;
+  border-bottom-left-radius: 3.5rem;
+  box-shadow: 0 0 0.5rem var(--shadow-color-1);
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--bg-color-1);
+    padding: 1rem 1.8rem 1rem 1.3rem;
   }
 }
 </style>

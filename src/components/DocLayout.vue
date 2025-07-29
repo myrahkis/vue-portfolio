@@ -3,7 +3,6 @@
 <template>
   <div class="inner-doc-wrapper">
     <div class="project-preview">
-        <h1>Проект такой то такой то</h1>
       <slot name="project"></slot>
     </div>
   </div>
