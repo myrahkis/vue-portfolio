@@ -12,8 +12,11 @@ import Ruler from "../../ui/Ruler.vue";
 import DropDownMenus from "./DropDownMenus.vue";
 import DropDownMenu from "../../ui/DropDownMenu.vue";
 import ColorPicker from "../../ui/ColorPicker.vue";
+import { useUIStore } from "@/stores/UIStore";
 
 const route = useRoute();
+
+const UIStore = useUIStore();
 const docNameStore = useDocNameStore();
 const fontsStore = useFontsStore();
 const widthsStore = useWidthStore();
@@ -26,16 +29,6 @@ const undo = () => pinia.undo();
 const redo = () => pinia.redo();
 const canUndo = computed(() => pinia._undoRedo.past.length > 0);
 const canRedo = computed(() => pinia._undoRedo.future.length > 0);
-
-const activeIndex = ref(null);
-const activeIndexColors = ref(null);
-
-function handleToggle(idx) {
-  activeIndex.value = activeIndex.value === idx ? null : idx;
-}
-function handleToggleColors(idx) {
-  activeIndexColors.value = activeIndexColors.value === idx ? null : idx;
-}
 
 onMounted(() => {
   if (route.name) {
@@ -254,6 +247,7 @@ onMounted(() => {
     <div class="doc-tools-container">
       <div>
         <button
+          title="Отменить (Ctrl + Z)"
           class="cancel-btn u-tools-hover"
           @click="undo"
           :disabled="!canUndo"
@@ -284,6 +278,7 @@ onMounted(() => {
           </svg>
         </button>
         <button
+          title="Повторить (Ctrl + Shift + Z)"
           class="repeat-btn u-tools-hover"
           @click="redo"
           :disabled="!canRedo"
@@ -316,18 +311,18 @@ onMounted(() => {
       </div>
       <div class="drop-down-width u-tools-hover">
         <DropDownMenu
-          :index="1"
-          :open="activeIndex === 1"
-          @toggle="handleToggle"
+          :index="6"
+          :open="UIStore.activeIndex === 6"
+          @toggle="UIStore.handleToggleMenu"
           v-model="widthsStore.selectedWidth"
           :options="widthsStore.options"
         />
       </div>
       <div class="drop-down-font u-tools-hover">
         <DropDownMenu
-          :index="2"
-          :open="activeIndex === 2"
-          @toggle="handleToggle"
+          :index="7"
+          :open="UIStore.activeIndex === 7"
+          @toggle="UIStore.handleToggleMenu"
           v-model="fontsStore.selectedFont"
           :options="fontsStore.fontsFamilies"
           label-key="name"
@@ -428,9 +423,9 @@ onMounted(() => {
       </div>
       <div class="drop-down-text-color u-tools-hover">
         <ColorPicker
-          :index="1"
-          :open="activeIndexColors === 1"
-          @toggle="handleToggleColors"
+          :index="8"
+          :open="UIStore.activeIndex === 8"
+          @toggle="UIStore.handleToggleMenu"
           title="Цвет текста"
           :icon="'A'"
           :colors="textColorStore.colors"
@@ -440,9 +435,9 @@ onMounted(() => {
       </div>
       <div class="drop-down-bg-text-color u-tools-hover">
         <ColorPicker
-          :index="2"
-          :open="activeIndexColors === 2"
-          @toggle="handleToggleColors"
+          :index="9"
+          :open="UIStore.activeIndex === 9"
+          @toggle="UIStore.handleToggleMenu"
           title="Цвет фона текста"
           :icon="'B'"
           :colors="textBgColorStore.colors"

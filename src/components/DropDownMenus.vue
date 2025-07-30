@@ -1,12 +1,10 @@
 <script setup>
 import router from "@/router";
-import { ref } from "vue";
 import { useDarkThemeStore } from "@/stores/darkThemeStore";
 import { useDeleteSiteStore } from "@/stores/deleteSiteStore";
+import { useUIStore } from "@/stores/UIStore";
 
-const dropDownOpen = ref(false);
-const openedIdx = ref(null);
-
+const UIStore = useUIStore();
 const darkThemeStore = useDarkThemeStore();
 const deleteSiteStore = useDeleteSiteStore();
 
@@ -51,21 +49,10 @@ const menusBtns = [
   },
 ];
 
-function openHandle(idx) {
-  if (idx === openedIdx.value) {
-    dropDownOpen.value = false;
-    openedIdx.value = null;
-  } else {
-    openedIdx.value = idx;
-    dropDownOpen.value = true;
-  }
-}
-
 async function onLinkClick(link) {
   if (link.to) {
     router.push(link.to);
-    dropDownOpen.value = false;
-    openedIdx.value = null;
+    UIStore.activeIndex = null;
     return;
   }
 
@@ -73,8 +60,7 @@ async function onLinkClick(link) {
     return;
   }
 
-  dropDownOpen.value = false;
-  openedIdx.value = null;
+  UIStore.activeIndex = null;
 
   try {
     await link.action();
@@ -118,19 +104,17 @@ function bwHandle() {
 
 <template>
   <ul class="nav">
-    <li
-      v-for="(btn, index) in menusBtns"
-      :key="index"
-      class="nav-elem"
-      @click="openHandle(index)"
-    >
-      <button class="menu-btn u-tools-hover">
+    <li v-for="(btn, index) in menusBtns" :key="index" class="nav-elem">
+      <button
+        class="menu-btn u-tools-hover"
+        @click="UIStore.handleToggleMenu(index + 1)"
+      >
         {{ btn.name }}
       </button>
-      <ul v-if="index === openedIdx && dropDownOpen" class="submenu">
+      <ul v-if="UIStore.activeIndex === index + 1" class="submenu">
         <li
-          v-for="(link, index) in btn.links"
-          :key="index"
+          v-for="(link, linkIdx) in btn.links"
+          :key="linkIdx"
           class="link-item"
           @click.stop="onLinkClick(link)"
         >
