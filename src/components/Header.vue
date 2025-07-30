@@ -1,16 +1,17 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { useDocNameStore } from "@/stores/docNameStore";
 import { useFontsStore } from "@/stores/fontsStore";
 import { useWidthStore } from "@/stores/widthStore";
 import { useFontSizeStore } from "@/stores/fontSizeStore";
+import { useTextColorStore } from "@/stores/textColorStore";
+import { useTextBgColorStore } from "@/stores/textBgColorStore";
+import { getActivePinia } from "pinia";
 import Ruler from "../../ui/Ruler.vue";
 import DropDownMenus from "./DropDownMenus.vue";
 import DropDownMenu from "../../ui/DropDownMenu.vue";
 import ColorPicker from "../../ui/ColorPicker.vue";
-import { useTextColorStore } from "@/stores/textColorStore";
-import { usetextBgColorStore } from "@/stores/textBgColorStore";
 
 const route = useRoute();
 const docNameStore = useDocNameStore();
@@ -18,7 +19,13 @@ const fontsStore = useFontsStore();
 const widthsStore = useWidthStore();
 const fontSizeStore = useFontSizeStore();
 const textColorStore = useTextColorStore();
-const textBgColorStore = usetextBgColorStore();
+const textBgColorStore = useTextBgColorStore();
+
+const pinia = getActivePinia();
+const undo = () => pinia.undo();
+const redo = () => pinia.redo();
+const canUndo = computed(() => pinia._undoRedo.past.length > 0);
+const canRedo = computed(() => pinia._undoRedo.future.length > 0);
 
 const activeIndex = ref(null);
 const activeIndexColors = ref(null);
@@ -246,7 +253,11 @@ onMounted(() => {
     </div>
     <div class="doc-tools-container">
       <div>
-        <button class="cancel-btn u-tools-hover">
+        <button
+          class="cancel-btn u-tools-hover"
+          @click="undo"
+          :disabled="!canUndo"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -272,7 +283,11 @@ onMounted(() => {
             </g>
           </svg>
         </button>
-        <button class="repeat-btn u-tools-hover">
+        <button
+          class="repeat-btn u-tools-hover"
+          @click="redo"
+          :disabled="!canRedo"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -332,13 +347,11 @@ onMounted(() => {
             height="1.8rem"
           >
             <g id="SVGRepo_bgCarrier" stroke-width="0" />
-
             <g
               id="SVGRepo_tracerCarrier"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
-
             <g id="SVGRepo_iconCarrier">
               <title />
               <g id="Complete">

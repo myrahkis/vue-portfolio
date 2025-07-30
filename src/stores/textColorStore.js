@@ -85,7 +85,7 @@ export const useTextColorStore = defineStore("textColor", () => {
     "#521937",
   ];
 
-  const selectedColor = ref(null);
+  const selectedColor = ref(colors[0]);
 
   function setColor(color) {
     selectedColor.value = color;

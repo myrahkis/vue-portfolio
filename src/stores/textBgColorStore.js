@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-export const usetextBgColorStore = defineStore("bgColor", () => {
+export const useTextBgColorStore = defineStore("bgColor", () => {
   const colors = [
     "transparent",
     "#2A2A2A",

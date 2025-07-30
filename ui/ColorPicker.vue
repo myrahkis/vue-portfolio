@@ -18,8 +18,8 @@ function toggleOpen() {
 </script>
 
 <template>
-  <div class="color-picker-container" :title="title">
-    <div class="color-picker" @click="toggleOpen">
+  <div class="color-picker-container">
+    <div class="color-picker" @click="toggleOpen" :title="title">
       <p>{{ icon }}</p>
       <div
         class="color-preview"
