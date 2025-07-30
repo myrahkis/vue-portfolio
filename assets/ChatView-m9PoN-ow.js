@@ -1,0 +1,1 @@
+import{c as t,a,w as s,_ as r,o,b as c}from"./index-CWOUK8KD.js";const i={class:"chat-section"},m={__name:"ChatView",setup(n){return(_,e)=>(o(),t("section",i,[a(r,null,{project:s(()=>e[0]||(e[0]=[c("iframe",{class:"project-preview",src:"https://myrahkis.github.io/real-time-chat/",frameborder:"0"},null,-1)])),_:1})]))}};export{m as default};

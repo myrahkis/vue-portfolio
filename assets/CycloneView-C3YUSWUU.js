@@ -1,0 +1,1 @@
+import{c as s,a as o,w as t,_ as c,o as r,b as a}from"./index-CWOUK8KD.js";const n={class:"cyclone-section"},i={__name:"CycloneView",setup(l){return(_,e)=>(r(),s("section",n,[o(c,null,{project:t(()=>e[0]||(e[0]=[a("iframe",{class:"project-preview",src:"https://cyclon.pro",frameborder:"0"},null,-1)])),_:1})]))}};export{i as default};

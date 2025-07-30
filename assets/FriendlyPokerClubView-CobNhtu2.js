@@ -1,0 +1,1 @@
+import{c as r,a as s,w as t,_ as o,o as a,b as c}from"./index-CWOUK8KD.js";const n={class:"friendly-club-section"},p={__name:"FriendlyPokerClubView",setup(l){return(i,e)=>(a(),r("section",n,[s(o,null,{project:t(()=>e[0]||(e[0]=[c("iframe",{class:"project-preview",src:"https://friendlypoker.ru",frameborder:"0"},null,-1)])),_:1})]))}};export{p as default};

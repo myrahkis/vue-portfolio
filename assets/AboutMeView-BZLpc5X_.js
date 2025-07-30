@@ -1,1 +1,0 @@
-import{d as o,c as t,b as s,o as c}from"./index-B-nocDDr.js";const n={},r={class:"about-me-section"};function a(_,e){return c(),t("section",r,e[0]||(e[0]=[s("h1",null,"About me",-1)]))}const l=o(n,[["render",a]]);export{l as default};
