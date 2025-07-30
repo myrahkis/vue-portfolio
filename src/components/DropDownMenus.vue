@@ -3,6 +3,9 @@ import router from "@/router";
 import { useDarkThemeStore } from "@/stores/darkThemeStore";
 import { useDeleteSiteStore } from "@/stores/deleteSiteStore";
 import { useUIStore } from "@/stores/UIStore";
+import Modal from "../../ui/Modal.vue";
+import SiteInfo from "./SiteInfo.vue";
+import Stats from "./Stats.vue";
 
 const UIStore = useUIStore();
 const darkThemeStore = useDarkThemeStore();
@@ -83,10 +86,10 @@ async function copyLinkHandle() {
 }
 
 function toggleSiteInfo() {
-  return;
+  UIStore.openModal(SiteInfo);
 }
 function toggleStats() {
-  return;
+  UIStore.openModal(Stats);
 }
 function toggleQuots() {
   return;
@@ -123,6 +126,11 @@ function bwHandle() {
       </ul>
     </li>
   </ul>
+  <Modal v-if="UIStore.modalOpen">
+    <template #modal-content>
+      <component :is="UIStore.modalContent"></component>
+    </template>
+  </Modal>
 </template>
 
 <style scoped>
