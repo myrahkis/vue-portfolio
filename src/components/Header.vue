@@ -8,17 +8,26 @@ import { useFontSizeStore } from "@/stores/fontSizeStore";
 import Ruler from "../../ui/Ruler.vue";
 import DropDownMenus from "./DropDownMenus.vue";
 import DropDownMenu from "../../ui/DropDownMenu.vue";
+import ColorPicker from "../../ui/ColorPicker.vue";
+import { useTextColorStore } from "@/stores/textColorStore";
+import { usetextBgColorStore } from "@/stores/textBgColorStore";
 
 const route = useRoute();
 const docNameStore = useDocNameStore();
 const fontsStore = useFontsStore();
 const widthsStore = useWidthStore();
 const fontSizeStore = useFontSizeStore();
+const textColorStore = useTextColorStore();
+const textBgColorStore = usetextBgColorStore();
 
 const activeIndex = ref(null);
+const activeIndexColors = ref(null);
 
 function handleToggle(idx) {
   activeIndex.value = activeIndex.value === idx ? null : idx;
+}
+function handleToggleColors(idx) {
+  activeIndexColors.value = activeIndexColors.value === idx ? null : idx;
 }
 
 onMounted(() => {
@@ -404,8 +413,30 @@ onMounted(() => {
           </svg>
         </button>
       </div>
-      <div class="drop-down-text-color u-tools-hover">Text color</div>
-      <div class="drop-down-bg-text-color u-tools-hover">Bg text color</div>
+      <div class="drop-down-text-color u-tools-hover">
+        <ColorPicker
+          :index="1"
+          :open="activeIndexColors === 1"
+          @toggle="handleToggleColors"
+          title="Цвет текста"
+          :icon="'A'"
+          :colors="textColorStore.colors"
+          :selectedColor="textColorStore.selectedColor"
+          :onSelect="textColorStore.setColor"
+        />
+      </div>
+      <div class="drop-down-bg-text-color u-tools-hover">
+        <ColorPicker
+          :index="2"
+          :open="activeIndexColors === 2"
+          @toggle="handleToggleColors"
+          title="Цвет фона текста"
+          :icon="'B'"
+          :colors="textBgColorStore.colors"
+          :selectedColor="textBgColorStore.selectedColor"
+          :onSelect="textBgColorStore.setColor"
+        />
+      </div>
     </div>
     <Ruler :rotate="false" />
   </header>
@@ -413,6 +444,7 @@ onMounted(() => {
 
 <style scoped>
 .header {
+  position: relative;
   grid-column: 1 / -1;
   grid-row: 1;
   display: flex;

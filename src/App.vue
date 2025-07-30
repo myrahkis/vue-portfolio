@@ -56,27 +56,12 @@ const widthsStore = useWidthStore();
       </svg>
     </button>
     <main class="main-container">
-      <button class="hidden-btn">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 17 17"
-          width="2rem"
-          height="2rem"
-          version="1.1"
-        >
-          <path
-            fill="currentColor"
-            d="M 16 2 v 2 h -11 v -2 h 11 Z M 5 9 h 11 v -2 h -11 v 2 Z M 5 14 h 11 v -2 h -11 v 2 Z M 2 2 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 7 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 12 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z"
-          />
-        </svg>
-      </button>
       <div class="doc-container">
         <div
           class="doc"
           :style="{
-            width: widthsStore.selectedWidth,
             transform: `scale(${widthsStore.scale})`,
-            transformOrigin: 'top left',
+            transformOrigin: 'top center',
           }"
         >
           <RouterView />
@@ -84,6 +69,20 @@ const widthsStore = useWidthStore();
       </div>
     </main>
   </div>
+  <button class="hidden-btn">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 17 17"
+      width="2rem"
+      height="2rem"
+      version="1.1"
+    >
+      <path
+        fill="currentColor"
+        d="M 16 2 v 2 h -11 v -2 h 11 Z M 5 9 h 11 v -2 h -11 v 2 Z M 5 14 h 11 v -2 h -11 v 2 Z M 2 2 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 7 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 12 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z"
+      />
+    </svg>
+  </button>
 </template>
 
 <style>
@@ -95,6 +94,8 @@ const widthsStore = useWidthStore();
 }
 .main-container {
   position: relative;
+  display: grid;
+  justify-items: center;
   overflow-y: auto;
   grid-column: 2 / 3;
   grid-row: 2;
@@ -103,20 +104,18 @@ const widthsStore = useWidthStore();
 .doc-container {
   height: auto;
   width: 60%;
-  margin: 0 auto;
-  margin-top: -2rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 }
 .doc {
-  /* width: 100%; */
   margin: 0 auto;
   background-color: var(--white);
   border: 1px solid #c8cbce;
 }
 .hidden-btn {
-  position: sticky;
-  top: 1.5rem;
-  left: 1.5rem;
+  position: fixed;
+  top: 20%;
+  left: 2.4%;
   display: flex;
   justify-content: center;
   align-items: center;
