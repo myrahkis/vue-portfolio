@@ -1,0 +1,1 @@
+import{c as s,a as t,w as a,_ as r,o,b as c}from"./index-RA-zTaYn.js";const i={class:"simples-section"},m={__name:"SimplesView",setup(l){return(n,e)=>(o(),s("section",i,[t(r,null,{project:a(()=>e[0]||(e[0]=[c("iframe",{class:"project-preview",src:"https://myrahkis.github.io/simples-w-vue/",frameborder:"0"},null,-1)])),_:1})]))}};export{m as default};
