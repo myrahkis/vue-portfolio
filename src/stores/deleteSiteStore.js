@@ -18,5 +18,13 @@ export const useDeleteSiteStore = defineStore("deleteSite", () => {
     }
   }
 
-  return { isSiteDeleted, deleteHandle };
+  function handleKeydownDelete(event) {
+    if (event.key === "Delete") {
+      console.log("press");
+      event.preventDefault();
+      deleteHandle();
+    }
+  }
+
+  return { isSiteDeleted, deleteHandle, handleKeydownDelete };
 });

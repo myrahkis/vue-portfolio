@@ -6,6 +6,7 @@ import { useUIStore } from "@/stores/UIStore";
 import Modal from "../../ui/Modal.vue";
 import SiteInfo from "./SiteInfo.vue";
 import Stats from "./Stats.vue";
+import { onBeforeUnmount, onMounted } from "vue";
 
 const UIStore = useUIStore();
 const darkThemeStore = useDarkThemeStore();
@@ -35,7 +36,6 @@ const menusBtns = [
     name: "Инструменты",
     links: [
       { name: "Статистика", action: toggleStats },
-      { name: "Цитаты?", action: toggleQuots },
       { name: "Быстрые клавиши?", action: toggleShortcuts },
     ],
   },
@@ -103,6 +103,13 @@ function sepiaHandle() {
 function bwHandle() {
   return;
 }
+
+onMounted(() => {
+  window.addEventListener("keydown", deleteSiteStore.handleKeydownDelete);
+});
+onBeforeUnmount(() => {
+  window.removeEventListener("keydown", deleteSiteStore.handleKeydownDelete);
+});
 </script>
 
 <template>

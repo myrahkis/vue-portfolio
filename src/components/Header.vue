@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { useDocNameStore } from "@/stores/docNameStore";
 import { useFontsStore } from "@/stores/fontsStore";
@@ -8,11 +8,11 @@ import { useFontSizeStore } from "@/stores/fontSizeStore";
 import { useTextColorStore } from "@/stores/textColorStore";
 import { useTextBgColorStore } from "@/stores/textBgColorStore";
 import { getActivePinia } from "pinia";
+import { useUIStore } from "@/stores/UIStore";
 import Ruler from "../../ui/Ruler.vue";
 import DropDownMenus from "./DropDownMenus.vue";
 import DropDownMenu from "../../ui/DropDownMenu.vue";
 import ColorPicker from "../../ui/ColorPicker.vue";
-import { useUIStore } from "@/stores/UIStore";
 
 const route = useRoute();
 
@@ -30,10 +30,27 @@ const redo = () => pinia.redo();
 const canUndo = computed(() => pinia._undoRedo.past.length > 0);
 const canRedo = computed(() => pinia._undoRedo.future.length > 0);
 
+function handleKeydownRedoUndo(event) {
+  const key = event.key.toLowerCase();
+  if (event.ctrlKey && !event.shiftKey && key === "z") {
+    event.preventDefault();
+    undo();
+  }
+  if (event.ctrlKey && event.shiftKey && key === "z") {
+    event.preventDefault();
+    redo();
+  }
+}
+
 onMounted(() => {
   if (route.name) {
     docNameStore.setDocName(route.name.toString());
   }
+
+  window.addEventListener("keydown", handleKeydownRedoUndo);
+});
+onBeforeUnmount(() => {
+  window.removeEventListener("keydown", handleKeydownRedoUndo);
 });
 </script>
 
