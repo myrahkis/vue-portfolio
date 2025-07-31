@@ -34,7 +34,7 @@ const UIStore = useUIStore();
   </div>
 </template>
 
-<style scoped>
+<style>
 .modal-container {
   position: absolute;
   inset: 0;

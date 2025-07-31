@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
 :root {
+  --ememphasis-color: #2b7fd8;
   --light-blue-color: #c2e7ff;
   --light-blue-hover: #b2d7ef;
   --dark-blue-text: #05223a;

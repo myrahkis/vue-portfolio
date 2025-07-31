@@ -1,12 +1,12 @@
 <script setup>
-import router from "@/router";
+import { onBeforeUnmount, onMounted } from "vue";
 import { useDarkThemeStore } from "@/stores/darkThemeStore";
 import { useDeleteSiteStore } from "@/stores/deleteSiteStore";
 import { useUIStore } from "@/stores/UIStore";
+import router from "@/router";
 import Modal from "../../ui/Modal.vue";
 import SiteInfo from "./SiteInfo.vue";
 import Stats from "./Stats.vue";
-import { onBeforeUnmount, onMounted } from "vue";
 
 const UIStore = useUIStore();
 const darkThemeStore = useDarkThemeStore();
@@ -79,7 +79,7 @@ async function copyLinkHandle() {
   try {
     const url = window.location.href;
     await navigator.clipboard.writeText(url);
-    alert("Ссылка скопирована!!");
+    await UIStore.confirmDialog("Ссылка успешно скопирована!", "", false);
   } catch (err) {
     console.error("Ошибка при копировании:", err);
   }
@@ -90,9 +90,6 @@ function toggleSiteInfo() {
 }
 function toggleStats() {
   UIStore.openModal(Stats);
-}
-function toggleQuots() {
-  return;
 }
 function toggleShortcuts() {
   return;
@@ -135,7 +132,26 @@ onBeforeUnmount(() => {
   </ul>
   <Modal v-if="UIStore.modalOpen">
     <template #modal-content>
-      <component :is="UIStore.modalContent"></component>
+      <component :is="UIStore.modalContent" />
+    </template>
+  </Modal>
+  <Modal v-if="UIStore.confirmOpen">
+    <template #modal-content>
+      <component
+        :is="UIStore.modalContent?.component"
+        :actionText="UIStore.modalContent?.props.actionText"
+        :isCancelBtn="UIStore.modalContent?.props.isCancelBtn"
+        :message="UIStore.modalContent?.props.message"
+        :confirmBtnText="UIStore.modalContent?.props.confirmBtnText"
+        @confirm="
+          UIStore.modalContent.props?.onConfirm?.();
+          UIStore.closeModal();
+        "
+        @cancel="
+          UIStore.modalContent.props?.onCancel?.();
+          UIStore.closeModal();
+        "
+      />
     </template>
   </Modal>
 </template>

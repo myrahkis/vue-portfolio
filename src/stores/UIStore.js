@@ -1,9 +1,11 @@
 import { defineStore } from "pinia";
 import { ref, shallowRef } from "vue";
+import ConfirmModal from "../../ui/ConfirmModal.vue";
 
 export const useUIStore = defineStore("UIStore", () => {
   const activeIndex = ref(null);
   const modalOpen = ref(false);
+  const confirmOpen = ref(false);
   const modalContent = shallowRef(null);
 
   function handleToggleMenu(idx) {
@@ -13,8 +15,33 @@ export const useUIStore = defineStore("UIStore", () => {
     modalOpen.value = true;
     modalContent.value = content;
   }
+  function openConfirm(content) {
+    confirmOpen.value = true;
+    modalContent.value = content;
+  }
   function closeModal() {
     modalOpen.value = false;
+    confirmOpen.value = false;
+  }
+
+  function confirmDialog(actionText, message, isCancelBtn, confirmBtnText) {
+    return new Promise((resolve) => {
+      openConfirm({
+        component: ConfirmModal,
+        props: {
+          actionText,
+          message,
+          isCancelBtn,
+          confirmBtnText,
+          onConfirm: () => {
+            resolve(true);
+          },
+          onCancel: () => {
+            resolve(false);
+          },
+        },
+      });
+    });
   }
 
   return {
@@ -22,7 +49,10 @@ export const useUIStore = defineStore("UIStore", () => {
     handleToggleMenu,
     modalOpen,
     openModal,
+    confirmOpen,
+    openConfirm,
     closeModal,
     modalContent,
+    confirmDialog,
   };
 });

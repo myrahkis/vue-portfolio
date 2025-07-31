@@ -68,21 +68,21 @@ const widthsStore = useWidthStore();
         </div>
       </div>
     </main>
+    <button class="hidden-btn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 17 17"
+        width="2rem"
+        height="2rem"
+        version="1.1"
+      >
+        <path
+          fill="currentColor"
+          d="M 16 2 v 2 h -11 v -2 h 11 Z M 5 9 h 11 v -2 h -11 v 2 Z M 5 14 h 11 v -2 h -11 v 2 Z M 2 2 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 7 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 12 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z"
+        />
+      </svg>
+    </button>
   </div>
-  <button class="hidden-btn">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 17 17"
-      width="2rem"
-      height="2rem"
-      version="1.1"
-    >
-      <path
-        fill="currentColor"
-        d="M 16 2 v 2 h -11 v -2 h 11 Z M 5 9 h 11 v -2 h -11 v 2 Z M 5 14 h 11 v -2 h -11 v 2 Z M 2 2 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 7 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 12 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z"
-      />
-    </svg>
-  </button>
 </template>
 
 <style>
@@ -114,7 +114,7 @@ const widthsStore = useWidthStore();
 }
 .hidden-btn {
   position: fixed;
-  top: 20%;
+  top: 21%;
   left: 2.4%;
   display: flex;
   justify-content: center;
