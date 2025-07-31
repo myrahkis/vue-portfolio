@@ -3,14 +3,17 @@ import { onBeforeUnmount, onMounted } from "vue";
 import { useDarkThemeStore } from "@/stores/darkThemeStore";
 import { useDeleteSiteStore } from "@/stores/deleteSiteStore";
 import { useUIStore } from "@/stores/UIStore";
+import { useFilterStore } from "@/stores/filterStore";
 import router from "@/router";
 import Modal from "../../ui/Modal.vue";
 import SiteInfo from "./SiteInfo.vue";
 import Stats from "./Stats.vue";
+import HotKeys from "./HotKeys.vue";
 
 const UIStore = useUIStore();
 const darkThemeStore = useDarkThemeStore();
 const deleteSiteStore = useDeleteSiteStore();
+const filterStore = useFilterStore();
 
 const menusBtns = [
   {
@@ -36,14 +39,16 @@ const menusBtns = [
     name: "Инструменты",
     links: [
       { name: "Статистика", action: toggleStats },
-      { name: "Быстрые клавиши?", action: toggleShortcuts },
+      { name: "Быстрые клавиши", action: toggleShortcuts },
     ],
   },
   {
-    name: "Расширения?",
+    name: "Расширения",
     links: [
-      { name: "Сепия", action: sepiaHandle },
-      { name: "ЧБ", action: bwHandle },
+      { name: "Сепия", action: filterStore.sepiaHandle },
+      { name: "ЧБ", action: filterStore.bwHandle },
+      { name: "Инверсия", action: filterStore.invertHandle },
+      { name: "Сбросить", action: filterStore.resetHandle },
     ],
   },
   {
@@ -92,13 +97,7 @@ function toggleStats() {
   UIStore.openModal(Stats);
 }
 function toggleShortcuts() {
-  return;
-}
-function sepiaHandle() {
-  return;
-}
-function bwHandle() {
-  return;
+  UIStore.openModal(HotKeys);
 }
 
 onMounted(() => {
