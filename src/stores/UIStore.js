@@ -7,6 +7,7 @@ export const useUIStore = defineStore("UIStore", () => {
   const modalOpen = ref(false);
   const confirmOpen = ref(false);
   const modalContent = shallowRef(null);
+  const isDetailsOpen = ref(false);
 
   function handleToggleMenu(idx) {
     activeIndex.value = activeIndex.value === idx ? null : idx;
@@ -22,6 +23,13 @@ export const useUIStore = defineStore("UIStore", () => {
   function closeModal() {
     modalOpen.value = false;
     confirmOpen.value = false;
+  }
+
+  function openDetails() {
+    isDetailsOpen.value = true;
+  }
+  function closeDetails() {
+    isDetailsOpen.value = false;
   }
 
   function confirmDialog(actionText, message, isCancelBtn, confirmBtnText) {
@@ -54,5 +62,8 @@ export const useUIStore = defineStore("UIStore", () => {
     closeModal,
     modalContent,
     confirmDialog,
+    isDetailsOpen,
+    openDetails,
+    closeDetails,
   };
 });

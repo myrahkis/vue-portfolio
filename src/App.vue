@@ -2,14 +2,17 @@
 import { useDeleteSiteStore } from "./stores/deleteSiteStore";
 import { useSideBarStore } from "./stores/sideBarStore";
 import { useWidthStore } from "./stores/widthStore";
+import { useUIStore } from "./stores/UIStore";
 import BlueScreen from "../ui/BlueScreen.vue";
 import Ruler from "../ui/Ruler.vue";
 import Header from "./components/Header.vue";
 import SideBar from "./components/SideBar.vue";
+import Details from "./components/Details.vue";
 
 const deleteSiteStore = useDeleteSiteStore();
 const sideBarStore = useSideBarStore();
 const widthsStore = useWidthStore();
+const UIStore = useUIStore();
 </script>
 
 <template>
@@ -67,8 +70,13 @@ const widthsStore = useWidthStore();
           <RouterView />
         </div>
       </div>
+      <Details v-if="UIStore.isDetailsOpen" />
     </main>
-    <button class="hidden-btn">
+    <button
+      class="details-btn"
+      @click="UIStore.openDetails"
+      v-if="!UIStore.isDetailsOpen"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 17 17"
@@ -81,12 +89,14 @@ const widthsStore = useWidthStore();
           d="M 16 2 v 2 h -11 v -2 h 11 Z M 5 9 h 11 v -2 h -11 v 2 Z M 5 14 h 11 v -2 h -11 v 2 Z M 2 2 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 7 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 12 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z"
         />
       </svg>
+      <div class="tooltip-text">Описание</div>
     </button>
   </div>
 </template>
 
 <style>
 .layout-grid {
+  position: relative;
   display: grid;
   grid-template-rows: 0.23fr auto;
   height: 100vh;
@@ -103,7 +113,7 @@ const widthsStore = useWidthStore();
 }
 .doc-container {
   height: auto;
-  width: 60%;
+  width: 55%;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
@@ -112,26 +122,46 @@ const widthsStore = useWidthStore();
   background-color: var(--white);
   border: 1px solid #c8cbce;
 }
-.hidden-btn {
+.details-btn {
   position: fixed;
   top: 21%;
   left: 2.4%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: fit-content;
+  overflow: hidden;
+  max-width: 5rem;
+  height: 5rem;
   padding: 1.5rem;
-  border-radius: 50%;
+  border-radius: 5rem;
   background-color: var(--bg-color-1);
-  transition: background-color 0.2s;
+  transition: background-color 0.4s, max-width 0.4s ease,
+    border-radius 0.4s ease;
 
   svg {
     color: var(--icons-color);
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
   }
 
   &:hover {
     background-color: var(--tools-hover-color);
+    max-width: 15rem;
+
+    .tooltip-text {
+      opacity: 1;
+      transform: scaleX(1);
+    }
   }
+}
+.tooltip-text {
+  margin-left: 1rem;
+  opacity: 0;
+  color: var(--text-color-1);
+  white-space: nowrap;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
 .open-sidebar-btn {
