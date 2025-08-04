@@ -29,10 +29,10 @@ const menusBtns = [
   {
     name: "Вставка",
     links: [
-      { name: "Simples", to: "/simples" },
-      { name: "Chat", to: "/ws-chat" },
-      { name: "Cyclone", to: "/cyclone" },
       { name: "FriendlyPokerClub", to: "/friendly-poker-club" },
+      { name: "Simples", to: "/simples" },
+      { name: "Cyclone", to: "/cyclone" },
+      { name: "Chat", to: "/ws-chat" },
     ],
   },
   {
@@ -53,7 +53,10 @@ const menusBtns = [
   },
   {
     name: "Справка",
-    links: [{ name: "Обо мне", to: "/about-me" }],
+    links: [
+      { name: "Главная", to: "/" },
+      { name: "Обо мне", to: "/about-me" },
+    ],
   },
 ];
 

@@ -8,6 +8,7 @@ export const useUIStore = defineStore("UIStore", () => {
   const confirmOpen = ref(false);
   const modalContent = shallowRef(null);
   const isDetailsOpen = ref(false);
+  const detailsPayload = ref(null);
 
   function handleToggleMenu(idx) {
     activeIndex.value = activeIndex.value === idx ? null : idx;
@@ -27,6 +28,9 @@ export const useUIStore = defineStore("UIStore", () => {
 
   function openDetails() {
     isDetailsOpen.value = true;
+  }
+  function setPayload(payload) {
+    detailsPayload.value = payload;
   }
   function closeDetails() {
     isDetailsOpen.value = false;
@@ -63,6 +67,8 @@ export const useUIStore = defineStore("UIStore", () => {
     modalContent,
     confirmDialog,
     isDetailsOpen,
+    setPayload,
+    detailsPayload,
     openDetails,
     closeDetails,
   };

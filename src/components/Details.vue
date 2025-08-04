@@ -11,8 +11,8 @@ const UIStore = useUIStore();
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 28 28"
-        width="2.5rem"
-        height="2.5rem"
+        width="2rem"
+        height="2rem"
       >
         <g id="SVGRepo_bgCarrier" stroke-width="0" />
         <g
@@ -28,19 +28,47 @@ const UIStore = useUIStore();
         </g>
       </svg>
     </button>
-    <div></div>
+    <div class="details-info">
+      <p
+        v-for="(sentence, index) in UIStore?.detailsPayload?.text"
+        :key="index"
+      >
+        {{ sentence }}
+      </p>
+    </div>
   </aside>
 </template>
 
-<style scoped>
+<style>
 .details-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  top: 19%;
+  left: 1.3%;
+  z-index: 5;
+  width: 22%;
   height: 100%;
-  background-color: red;
+
+  padding: 2rem;
 }
+
 .back-btn {
+  display: flex;
+  align-items: center;
+  color: var(--icons-color);
+  padding: 1.2rem;
+  border-radius: 50%;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--tools-hover-color);
+  }
+}
+
+.details-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.2rem 1rem;
   color: var(--icons-color);
 }
 </style>

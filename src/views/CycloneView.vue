@@ -1,5 +1,20 @@
 <script setup>
+import { onMounted } from "vue";
+import { useUIStore } from "@/stores/UIStore";
 import DocLayout from "@/components/DocLayout.vue";
+
+const UIStore = useUIStore();
+
+onMounted(() => {
+  UIStore.setPayload({
+    text: [
+      "Лендинг для циклонных фильтров.",
+      "Стэк: Vue.js, imask;",
+      "Функционал: форма обратной связи;",
+      "Проект на github.",
+    ],
+  });
+});
 </script>
 
 <template>

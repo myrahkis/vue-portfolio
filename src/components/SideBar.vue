@@ -180,4 +180,19 @@ const { onClose } = defineProps({ onClose: Function });
     color: var(--bg-color);
   }
 }
+
+.details-slide-enter-active,
+.details-slide-leave-active {
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+.details-slide-enter-from,
+.details-slide-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.details-slide-enter-to,
+.details-slide-leave-from {
+  transform: translateX(0);
+  opacity: 1;
+}
 </style>

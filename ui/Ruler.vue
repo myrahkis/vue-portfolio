@@ -127,6 +127,8 @@ const { rotate } = defineProps({ rotate: Boolean });
 }
 
 .ruler.vertical {
+  position: relative;
+  z-index: 10;
   width: 100%;
   height: 100%;
   margin: 0;

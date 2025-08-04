@@ -1,5 +1,20 @@
 <script setup>
+import { onMounted } from "vue";
+import { useUIStore } from "@/stores/UIStore";
 import DocLayout from "@/components/DocLayout.vue";
+
+const UIStore = useUIStore();
+
+onMounted(() => {
+  UIStore.setPayload({
+    text: [
+      "Чат.",
+      "Стэк: Vue.js (Vuex и VueRouter), websockets;",
+      "Функционал: ws сервер лежит на Render и ему нужно некоторое время, чтобы проснуться;",
+      "Проект на github.",
+    ],
+  });
+});
 </script>
 
 <template>

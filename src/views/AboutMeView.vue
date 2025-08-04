@@ -1,10 +1,19 @@
 <script setup>
+import { onMounted } from "vue";
 import { useTextBgColorStore } from "@/stores/textBgColorStore";
 import { useTextColorStore } from "@/stores/textColorStore";
+import { useUIStore } from "@/stores/UIStore";
 import DocLayout from "@/components/DocLayout.vue";
 
 const textColorStore = useTextColorStore();
 const textBgColorStore = useTextBgColorStore();
+const UIStore = useUIStore();
+
+onMounted(() => {
+  UIStore.setPayload({
+    text: ["Здесь будут отображаться подробности о проекте :)"],
+  });
+});
 </script>
 
 <template>

@@ -17,13 +17,13 @@ const fontSizeStore = useFontSizeStore();
 
 <style>
 .inner-doc-wrapper {
-  padding: 5rem 4rem;
+  padding: 5rem 16rem;
 }
 
 .project-preview {
   iframe {
-    width: 60%;
-    aspect-ratio: 9 / 16;
+    width: 100%;
+    aspect-ratio: 9 / 13;
   }
 }
 </style>

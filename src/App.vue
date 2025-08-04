@@ -70,7 +70,9 @@ const UIStore = useUIStore();
           <RouterView />
         </div>
       </div>
-      <Details v-if="UIStore.isDetailsOpen" />
+      <transition name="details-slide">
+        <Details v-show="UIStore.isDetailsOpen" />
+      </transition>
     </main>
     <button
       class="details-btn"
@@ -126,6 +128,7 @@ const UIStore = useUIStore();
   position: fixed;
   top: 21%;
   left: 2.4%;
+  z-index: 3;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -150,7 +153,7 @@ const UIStore = useUIStore();
 
     .tooltip-text {
       opacity: 1;
-      transform: scaleX(1);
+      transform: translateX(0);
     }
   }
 }
@@ -160,7 +163,7 @@ const UIStore = useUIStore();
   color: var(--text-color-1);
   white-space: nowrap;
   transform-origin: left center;
-  transform: scaleX(0);
+  transform: translateX(-30%);
   transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
@@ -182,5 +185,20 @@ const UIStore = useUIStore();
     background-color: var(--bg-color-1);
     padding: 1rem 1.8rem 1rem 1.3rem;
   }
+}
+
+.details-slide-enter-active,
+.details-slide-leave-active {
+  transition: transform 0.5s ease, opacity 0.2s ease;
+}
+.details-slide-enter-from,
+.details-slide-leave-to {
+  transform: translateX(-5%);
+  opacity: 0;
+}
+.details-slide-enter-to,
+.details-slide-leave-from {
+  transform: translateX(0);
+  opacity: 1;
 }
 </style>
