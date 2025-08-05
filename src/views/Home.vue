@@ -3,7 +3,12 @@ import { useTextBgColorStore } from "@/stores/textBgColorStore";
 import { useTextColorStore } from "@/stores/textColorStore";
 import { useUIStore } from "@/stores/UIStore";
 import { onMounted } from "vue";
+import { useI18n } from "vue-i18n";
 import DocLayout from "@/components/DocLayout.vue";
+
+const { t } = useI18n({
+  useScope: "global",
+});
 
 const textColorStore = useTextColorStore();
 const textBgColorStore = useTextBgColorStore();
@@ -27,7 +32,7 @@ onMounted(() => {
               backgroundColor: textBgColorStore.selectedColor,
               lineHeight: 1.55,
             }"
-            >Моё Vue портфолио на Vue.js</span
+            >{{ t("home.h1") }}</span
           >
         </h1>
         <ul class="features-list">

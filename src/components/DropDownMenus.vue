@@ -9,18 +9,23 @@ import Modal from "../../ui/Modal.vue";
 import SiteInfo from "./SiteInfo.vue";
 import Stats from "./Stats.vue";
 import HotKeys from "./HotKeys.vue";
+import { useLangStore } from "@/stores/langStore";
 
 const UIStore = useUIStore();
 const darkThemeStore = useDarkThemeStore();
 const deleteSiteStore = useDeleteSiteStore();
 const filterStore = useFilterStore();
+const langStore = useLangStore();
 
 const menusBtns = [
   {
     name: "Файл",
     links: [
       { name: "Тема сайта", action: darkThemeStore.toggleDarkTheme },
-      { name: "Язык", action: changeLangHandle },
+      {
+        name: () => `Язык ${langStore.currentLang}`,
+        action: langStore.changeLocale,
+      },
       { name: "Поделиться", action: copyLinkHandle },
       { name: "Удалить сайт", action: deleteSiteStore.deleteHandle },
       { name: "Информация", action: toggleSiteInfo },
@@ -127,7 +132,7 @@ onBeforeUnmount(() => {
           class="link-item"
           @click.stop="onLinkClick(link)"
         >
-          {{ link.name }}
+          {{ typeof link.name === "function" ? link.name() : link.name }}
         </li>
       </ul>
     </li>
