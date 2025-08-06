@@ -1,24 +1,22 @@
 import { defineStore } from "pinia";
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import { useRoute } from "vue-router";
+import { i18n } from "../../i18n";
 
 export const useDocNameStore = defineStore("docName", () => {
   const route = useRoute();
-  const docName = ref("");
 
   function setDocName(name) {
     docName.value = name;
   }
 
-  watch(
-    () => route.name,
-    (newName) => {
-      if (newName) {
-        setDocName(newName.toString());
-      }
-    },
-    { immediate: true }
-  );
+  const docName = computed(() => {
+    const key = route.meta.titleKey;
+    if (key) {
+      return i18n.global.t(key);
+    }
+    return route.name?.toString() ?? "";
+  });
 
   return { docName, setDocName };
 });

@@ -3,6 +3,7 @@ import { useDeleteSiteStore } from "./stores/deleteSiteStore";
 import { useSideBarStore } from "./stores/sideBarStore";
 import { useWidthStore } from "./stores/widthStore";
 import { useUIStore } from "./stores/UIStore";
+import { useI18n } from "vue-i18n";
 import BlueScreen from "../ui/BlueScreen.vue";
 import Ruler from "../ui/Ruler.vue";
 import Header from "./components/Header.vue";
@@ -13,6 +14,10 @@ const deleteSiteStore = useDeleteSiteStore();
 const sideBarStore = useSideBarStore();
 const widthsStore = useWidthStore();
 const UIStore = useUIStore();
+
+const { t } = useI18n({
+  useScope: "global",
+});
 </script>
 
 <template>
@@ -91,7 +96,7 @@ const UIStore = useUIStore();
           d="M 16 2 v 2 h -11 v -2 h 11 Z M 5 9 h 11 v -2 h -11 v 2 Z M 5 14 h 11 v -2 h -11 v 2 Z M 2 2 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 7 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 12 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z"
         />
       </svg>
-      <div class="tooltip-text">Описание</div>
+      <div class="tooltip-text">{{ t("common.descBtn") }}</div>
     </button>
   </div>
 </template>

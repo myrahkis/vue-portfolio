@@ -1,15 +1,16 @@
 <script setup>
-import { onBeforeUnmount, onMounted } from "vue";
+import { computed, onBeforeUnmount, onMounted } from "vue";
 import { useDarkThemeStore } from "@/stores/darkThemeStore";
 import { useDeleteSiteStore } from "@/stores/deleteSiteStore";
 import { useUIStore } from "@/stores/UIStore";
 import { useFilterStore } from "@/stores/filterStore";
+import { useLangStore } from "@/stores/langStore";
+import { useI18n } from "vue-i18n";
 import router from "@/router";
 import Modal from "../../ui/Modal.vue";
 import SiteInfo from "./SiteInfo.vue";
 import Stats from "./Stats.vue";
 import HotKeys from "./HotKeys.vue";
-import { useLangStore } from "@/stores/langStore";
 
 const UIStore = useUIStore();
 const darkThemeStore = useDarkThemeStore();
@@ -17,22 +18,34 @@ const deleteSiteStore = useDeleteSiteStore();
 const filterStore = useFilterStore();
 const langStore = useLangStore();
 
-const menusBtns = [
+const { t } = useI18n({
+  useScope: "global",
+});
+
+const menusBtns = computed(() => [
   {
-    name: "Файл",
+    name: t("common.file"),
     links: [
-      { name: "Тема сайта", action: darkThemeStore.toggleDarkTheme },
       {
-        name: () => `Язык ${langStore.currentLang}`,
+        name: t("common.fileBtns.darkTheme"),
+        action: darkThemeStore.toggleDarkTheme,
+      },
+      {
+        name: t("common.fileBtns.language", {
+          lang: langStore.currentLang.toUpperCase(),
+        }),
         action: langStore.changeLocale,
       },
-      { name: "Поделиться", action: copyLinkHandle },
-      { name: "Удалить сайт", action: deleteSiteStore.deleteHandle },
-      { name: "Информация", action: toggleSiteInfo },
+      { name: t("common.fileBtns.share"), action: copyLinkHandle },
+      {
+        name: t("common.fileBtns.deleteSite"),
+        action: deleteSiteStore.deleteHandle,
+      },
+      { name: t("common.fileBtns.info"), action: toggleSiteInfo },
     ],
   },
   {
-    name: "Вставка",
+    name: t("common.insert"),
     links: [
       { name: "FriendlyPokerClub", to: "/friendly-poker-club" },
       { name: "Simples", to: "/simples" },
@@ -41,29 +54,38 @@ const menusBtns = [
     ],
   },
   {
-    name: "Инструменты",
+    name: t("common.tools"),
     links: [
-      { name: "Статистика", action: toggleStats },
-      { name: "Быстрые клавиши", action: toggleShortcuts },
+      { name: t("common.toolsBtns.stats"), action: toggleStats },
+      { name: t("common.toolsBtns.shortcuts"), action: toggleShortcuts },
     ],
   },
   {
-    name: "Расширения",
+    name: t("common.extensions"),
     links: [
-      { name: "Сепия", action: filterStore.sepiaHandle },
-      { name: "ЧБ", action: filterStore.bwHandle },
-      { name: "Инверсия", action: filterStore.invertHandle },
-      { name: "Сбросить", action: filterStore.resetHandle },
+      {
+        name: t("common.extensionsBtns.sepia"),
+        action: filterStore.sepiaHandle,
+      },
+      { name: t("common.extensionsBtns.bw"), action: filterStore.bwHandle },
+      {
+        name: t("common.extensionsBtns.invert"),
+        action: filterStore.invertHandle,
+      },
+      {
+        name: t("common.extensionsBtns.reset"),
+        action: filterStore.resetHandle,
+      },
     ],
   },
   {
-    name: "Справка",
+    name: t("common.reference"),
     links: [
-      { name: "Главная", to: "/" },
-      { name: "Обо мне", to: "/about-me" },
+      { name: t("common.referenceBtns.home"), to: "/" },
+      { name: t("common.referenceBtns.aboutMe"), to: "/about-me" },
     ],
   },
-];
+]);
 
 async function onLinkClick(link) {
   if (link.to) {
@@ -85,9 +107,6 @@ async function onLinkClick(link) {
   }
 }
 
-function changeLangHandle() {
-  return;
-}
 async function copyLinkHandle() {
   try {
     const url = window.location.href;
@@ -132,7 +151,7 @@ onBeforeUnmount(() => {
           class="link-item"
           @click.stop="onLinkClick(link)"
         >
-          {{ typeof link.name === "function" ? link.name() : link.name }}
+          {{ link.name }}
         </li>
       </ul>
     </li>

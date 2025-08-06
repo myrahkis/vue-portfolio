@@ -1,19 +1,17 @@
 <script setup>
-import DocLayout from "@/components/DocLayout.vue";
 import { useUIStore } from "@/stores/UIStore";
-import { onMounted } from "vue";
+import { watchEffect } from "vue";
+import { useI18n } from "vue-i18n";
+import DocLayout from "@/components/DocLayout.vue";
 
 const UIStore = useUIStore();
+const { tm } = useI18n({
+  useScope: "global",
+});
 
-onMounted(() => {
+watchEffect(() => {
   UIStore.setPayload({
-    text: [
-      "Сайт для легального покерного клуба 'Friendly Poker Club.'",
-      "Стэк: Nuxt.js, pdfjs-dist;",
-      "Функционал: расписание турниров, подгрузка данных для нескольких городов, определение города по IP;",
-      "В планах: страница галереи и страница с правилами покера.",
-      "Проект на github.",
-    ],
+    text: tm("projects.friendlyPoker"),
   });
 });
 </script>

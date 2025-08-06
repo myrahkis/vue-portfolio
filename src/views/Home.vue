@@ -2,7 +2,7 @@
 import { useTextBgColorStore } from "@/stores/textBgColorStore";
 import { useTextColorStore } from "@/stores/textColorStore";
 import { useUIStore } from "@/stores/UIStore";
-import { onMounted } from "vue";
+import { watchEffect } from "vue";
 import { useI18n } from "vue-i18n";
 import DocLayout from "@/components/DocLayout.vue";
 
@@ -13,10 +13,13 @@ const { t } = useI18n({
 const textColorStore = useTextColorStore();
 const textBgColorStore = useTextBgColorStore();
 const UIStore = useUIStore();
+const { tm } = useI18n({
+  useScope: "global",
+});
 
-onMounted(() => {
+watchEffect(() => {
   UIStore.setPayload({
-    text: ["Здесь будут отображаться подробности о проекте :)"],
+    text: tm("projects.noDetails"),
   });
 });
 </script>
@@ -43,7 +46,7 @@ onMounted(() => {
                 backgroundColor: textBgColorStore.selectedColor,
                 lineHeight: 1.55,
               }"
-              >Файл - опции настройки сайта</span
+              >{{ t("home.li1") }}</span
             >
           </li>
           <li>
@@ -53,18 +56,7 @@ onMounted(() => {
                 backgroundColor: textBgColorStore.selectedColor,
                 lineHeight: 1.55,
               }"
-              >Вставка - мои проекты</span
-            >
-          </li>
-          <li>
-            <span
-              :style="{
-                color: textColorStore.selectedColor,
-                backgroundColor: textBgColorStore.selectedColor,
-                lineHeight: 1.55,
-              }"
-            >
-              Инструменты - фичи сайта</span
+              >{{ t("home.li2") }}</span
             >
           </li>
           <li>
@@ -75,7 +67,7 @@ onMounted(() => {
                 lineHeight: 1.55,
               }"
             >
-              Расширения - визуальная настройка</span
+              {{ t("home.li3") }}</span
             >
           </li>
           <li>
@@ -86,7 +78,18 @@ onMounted(() => {
                 lineHeight: 1.55,
               }"
             >
-              Справка - обо мне</span
+              {{ t("home.li4") }}</span
+            >
+          </li>
+          <li>
+            <span
+              :style="{
+                color: textColorStore.selectedColor,
+                backgroundColor: textBgColorStore.selectedColor,
+                lineHeight: 1.55,
+              }"
+            >
+              {{ t("home.li5") }}</span
             >
           </li>
         </ul>

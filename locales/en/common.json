@@ -1,5 +1,42 @@
 {
-  "title": "Vue portfolio",
-  "header": ["File", "Insert", "Tools", "Extensions", "Reference"],
-  "user": "Employer"
+  "file": "File",
+  "fileBtns": {
+    "darkTheme": "Dark theme",
+    "language": "Language {lang}",
+    "share": "Share",
+    "deleteSite": "Delete site",
+    "info": "Information"
+  },
+  "insert": "Insert",
+  "insertBtns": {
+    "friendlyPokerClub": "FriendlyPokerClub",
+    "simples": "Simples",
+    "cyclone": "Cyclone",
+    "chat": "Chat"
+  },
+  "tools": "Tools",
+  "toolsBtns": {
+    "stats": "Statistics",
+    "shortcuts": "Hot keys"
+  },
+  "extensions": "Extensions",
+  "extensionsBtns": {
+    "sepia": "Sepia",
+    "bw": "B&W",
+    "invert": "Invert",
+    "reset": "Reset"
+  },
+  "reference": "Reference",
+  "referenceBtns": {
+    "home": "Home",
+    "aboutMe": "About me"
+  },
+  "employer": "Employer",
+  "descBtn": "Description",
+  "home": "Vue portfolio",
+  "simples": "Simples",
+  "chat": "Chat",
+  "cyclone": "Cyclone",
+  "friendlyPokerClub": "Friendly Poker Club",
+  "aboutMe": "About me"
 }

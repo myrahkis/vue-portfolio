@@ -1,18 +1,17 @@
 <script setup>
-import { onMounted } from "vue";
+import { watchEffect } from "vue";
+import { useI18n } from "vue-i18n";
 import { useUIStore } from "@/stores/UIStore";
 import DocLayout from "@/components/DocLayout.vue";
 
 const UIStore = useUIStore();
+const { tm } = useI18n({
+  useScope: "global",
+});
 
-onMounted(() => {
+watchEffect(() => {
   UIStore.setPayload({
-    text: [
-      "Чат.",
-      "Стэк: Vue.js (Vuex и VueRouter), websockets;",
-      "Функционал: ws сервер лежит на Render и ему нужно пару минут, чтобы проснуться;",
-      "Проект на github.",
-    ],
+    text: tm("projects.chat"),
   });
 });
 </script>

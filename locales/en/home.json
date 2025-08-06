@@ -1,8 +1,8 @@
 {
   "h1": "My Vue portfolio w/ Vue.js",
-  "li1": "File - опции настройки сайта",
-  "li2": "Вставка - мои проекты",
-  "li3": "Инструменты - фичи сайта",
-  "li4": "Расширения - визуальная настройка",
-  "li5": "Справка - главная, обо мне"
+  "li1": "File - site settings options;",
+  "li2": "Insert - my projects;",
+  "li3": "Tools - site features;",
+  "li4": "Extensions - visual settings;",
+  "li5": "Reference - home, about me."
 }

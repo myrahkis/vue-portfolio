@@ -1,18 +1,17 @@
 <script setup>
-import { onMounted } from "vue";
+import { watchEffect } from "vue";
 import { useUIStore } from "@/stores/UIStore";
+import { useI18n } from "vue-i18n";
 import DocLayout from "@/components/DocLayout.vue";
 
 const UIStore = useUIStore();
+const { tm } = useI18n({
+  useScope: "global",
+});
 
-onMounted(() => {
+watchEffect(() => {
   UIStore.setPayload({
-    text: [
-      "Мой первый проект на Vue.js.",
-      "Стэк: Vue.js (VueRouter, немного Vuex), mathjs, api wiki;",
-      "Функционал: todo лист; страница постов, подгружаемых по api; поиск wiki страниц; калькулятор.",
-      "Проект на github."
-    ],
+    text: tm("projects.simples"),
   });
 });
 </script>

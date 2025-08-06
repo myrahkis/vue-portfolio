@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useDocNameStore } from "@/stores/docNameStore";
 import { useFontsStore } from "@/stores/fontsStore";
@@ -13,6 +13,7 @@ import Ruler from "../../ui/Ruler.vue";
 import DropDownMenus from "./DropDownMenus.vue";
 import DropDownMenu from "../../ui/DropDownMenu.vue";
 import ColorPicker from "../../ui/ColorPicker.vue";
+import { useI18n } from "vue-i18n";
 
 const route = useRoute();
 
@@ -41,6 +42,10 @@ function handleKeydownRedoUndo(event) {
     redo();
   }
 }
+
+const { t } = useI18n({
+  useScope: "global",
+});
 
 onMounted(() => {
   if (route.name) {
@@ -85,8 +90,6 @@ onBeforeUnmount(() => {
             />
 
             <g id="SVGRepo_iconCarrier">
-              <title>ic_fluent_lock_24_regular</title>
-              <desc>Created with Sketch.</desc>
               <g
                 id="🔍-Product-Icons"
                 fill="none"
@@ -106,7 +109,7 @@ onBeforeUnmount(() => {
               </g>
             </g>
           </svg>
-          <p>Работодатель</p>
+          <p>{{ t("common.employer") }}</p>
         </div>
         <div class="user-ava">
           <svg
@@ -264,7 +267,7 @@ onBeforeUnmount(() => {
     <div class="doc-tools-container">
       <div>
         <button
-          title="Отменить (Ctrl + Z)"
+          :title="t('tooltips.revert')"
           class="cancel-btn u-tools-hover"
           @click="undo"
           :disabled="!canUndo"
@@ -295,7 +298,7 @@ onBeforeUnmount(() => {
           </svg>
         </button>
         <button
-          title="Повторить (Ctrl + Shift + Z)"
+          :title="t('tooltips.repeat')"
           class="repeat-btn u-tools-hover"
           @click="redo"
           :disabled="!canRedo"
@@ -443,7 +446,7 @@ onBeforeUnmount(() => {
           :index="8"
           :open="UIStore.activeIndex === 8"
           @toggle="UIStore.handleToggleMenu"
-          title="Цвет текста"
+          :title="t('tooltips.textColor')"
           :icon="'A'"
           :colors="textColorStore.colors"
           :selectedColor="textColorStore.selectedColor"
@@ -455,7 +458,7 @@ onBeforeUnmount(() => {
           :index="9"
           :open="UIStore.activeIndex === 9"
           @toggle="UIStore.handleToggleMenu"
-          title="Цвет фона текста"
+          :title="t('tooltips.textBgColor')"
           :icon="'B'"
           :colors="textBgColorStore.colors"
           :selectedColor="textBgColorStore.selectedColor"

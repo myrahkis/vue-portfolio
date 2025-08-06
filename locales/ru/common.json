@@ -1,5 +1,42 @@
 {
-  "title": "Vue портфолио",
-  "header": ["Файл", "Вставка", "Инструменты", "Расширения", "Справка"],
-  "user": "Работодатель"
+  "file": "Файл",
+  "fileBtns": {
+    "darkTheme": "Тема сайта",
+    "language": "Язык {lang}",
+    "share": "Поделиться",
+    "deleteSite": "Удалить сайт",
+    "info": "Информация"
+  },
+  "insert": "Вставка",
+  "insertBtns": {
+    "friendlyPokerClub": "FriendlyPokerClub",
+    "simples": "Simples",
+    "cyclone": "Cyclone",
+    "chat": "Chat"
+  },
+  "tools": "Инструменты",
+  "toolsBtns": {
+    "stats": "Статистика",
+    "shortcuts": "Быстрые клавиши"
+  },
+  "extensions": "Расширения",
+  "extensionsBtns": {
+    "sepia": "Сепия",
+    "bw": "Чёрно-белый",
+    "invert": "Инверсия",
+    "reset": "Сбросить"
+  },
+  "reference": "Справка",
+  "referenceBtns": {
+    "home": "Главная",
+    "aboutMe": "Обо мне"
+  },
+  "employer": "Работодатель",
+  "descBtn": "Описание",
+  "home": "Vue портфолио",
+  "simples": "Simples",
+  "chat": "Chat",
+  "cyclone": "Cyclone",
+  "friendlyPokerClub": "Friendly Poker Club",
+  "aboutMe": "Обо мне"
 }

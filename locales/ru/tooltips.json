@@ -1,0 +1,9 @@
+{
+  "telegram": "Телеграм",
+  "email": "Почта",
+  "reactPortfolio": "React портфолио",
+  "textColor": "Цвет текста",
+  "textBgColor": "Цвет фона текста",
+  "revert": "Отменить (Ctrl + Z)",
+  "repeat": "Повторить (Ctrl + Shift + Z)"
+}

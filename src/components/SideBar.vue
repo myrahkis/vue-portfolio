@@ -1,11 +1,17 @@
 <script setup>
+import { useI18n } from "vue-i18n";
+
 const { onClose } = defineProps({ onClose: Function });
+
+const { t } = useI18n({
+  useScope: "global",
+});
 </script>
 
 <template>
   <aside class="side-header">
     <ul class="contacts-list">
-      <li class="u-tools-hover" title="Телеграм">
+      <li class="u-tools-hover" :title="t('tooltips.telegram')">
         <a href="https://t.me/myrahkis" target="_blank">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +75,7 @@ const { onClose } = defineProps({ onClose: Function });
           </svg>
         </a>
       </li>
-      <li class="u-tools-hover" title="Почта">
+      <li class="u-tools-hover" :title="t('tooltips.email')">
         <a href="mailto:myrahkis@yandex.ru">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +106,7 @@ const { onClose } = defineProps({ onClose: Function });
           </svg>
         </a>
       </li>
-      <li class="u-tools-hover" title="React портфолио">
+      <li class="u-tools-hover" :title="t('tooltips.reactPortfolio')">
         <a href="https://myrahkis.github.io/fridge-portfolio/" target="_blank">
           <svg
             xmlns="http://www.w3.org/2000/svg"

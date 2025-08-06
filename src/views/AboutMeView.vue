@@ -1,17 +1,21 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, watchEffect } from "vue";
 import { useTextBgColorStore } from "@/stores/textBgColorStore";
 import { useTextColorStore } from "@/stores/textColorStore";
 import { useUIStore } from "@/stores/UIStore";
+import { useI18n } from "vue-i18n";
 import DocLayout from "@/components/DocLayout.vue";
 
 const textColorStore = useTextColorStore();
 const textBgColorStore = useTextBgColorStore();
 const UIStore = useUIStore();
+const { t, tm } = useI18n({
+  useScope: "global",
+});
 
-onMounted(() => {
+watchEffect(() => {
   UIStore.setPayload({
-    text: ["Здесь будут отображаться подробности о проекте :)"],
+    text: tm("projects.noDetails"),
   });
 });
 </script>
@@ -27,7 +31,7 @@ onMounted(() => {
               backgroundColor: textBgColorStore.selectedColor,
               lineHeight: 1.55,
             }"
-            >Обо мне</span
+            >{{ t("aboutMe.title") }}</span
           >
         </h1>
         <ul class="about-me-list">
@@ -39,8 +43,7 @@ onMounted(() => {
                 lineHeight: 1.55,
               }"
             >
-              Гражданка вселенной, проживаю в Млечном пути, на Земле, в России,
-              в г. Москва;</span
+              {{ t("aboutMe.li1") }}</span
             >
           </li>
           <li>
@@ -51,8 +54,7 @@ onMounted(() => {
                 lineHeight: 1.55,
               }"
             >
-              Окончила ВУЗ по направлению информационные системы и технологии и
-              активно развиваюсь во frontend;</span
+              {{ t("aboutMe.li2") }}</span
             >
           </li>
           <li>
@@ -63,8 +65,7 @@ onMounted(() => {
                 lineHeight: 1.55,
               }"
             >
-              Почти свободно говорю на английском (С1), на 3 курсе изучала
-              китайский;</span
+              {{ t("aboutMe.li3") }}</span
             >
           </li>
           <li>
@@ -74,29 +75,7 @@ onMounted(() => {
                 backgroundColor: textBgColorStore.selectedColor,
                 lineHeight: 1.55,
               }"
-              >Обожаю путешествовать, уже побывала в 6 странах;</span
-            >
-          </li>
-          <li>
-            <span
-              :style="{
-                color: textColorStore.selectedColor,
-                backgroundColor: textBgColorStore.selectedColor,
-                lineHeight: 1.55,
-              }"
-            >
-              Люблю творчество: в свободное время разминаю пальцы, играя на
-              гитаре или рисуя;</span
-            >
-          </li>
-          <li>
-            <span
-              :style="{
-                color: textColorStore.selectedColor,
-                backgroundColor: textBgColorStore.selectedColor,
-                lineHeight: 1.55,
-              }"
-              >Также люблю отдыхать, читать и заниматься спортом;</span
+              >{{ t("aboutMe.li4") }}</span
             >
           </li>
           <li>
@@ -107,8 +86,28 @@ onMounted(() => {
                 lineHeight: 1.55,
               }"
             >
-              Считаю, что нет ничего неинтересного, поэтому посвятить себя
-              чему-то конкретному не могу.</span
+              {{ t("aboutMe.li5") }}</span
+            >
+          </li>
+          <li>
+            <span
+              :style="{
+                color: textColorStore.selectedColor,
+                backgroundColor: textBgColorStore.selectedColor,
+                lineHeight: 1.55,
+              }"
+              >{{ t("aboutMe.li6") }}</span
+            >
+          </li>
+          <li>
+            <span
+              :style="{
+                color: textColorStore.selectedColor,
+                backgroundColor: textBgColorStore.selectedColor,
+                lineHeight: 1.55,
+              }"
+            >
+              {{ t("aboutMe.li7") }}</span
             >
           </li>
         </ul>
@@ -122,14 +121,14 @@ onMounted(() => {
 
 <style scoped>
 .about-me-section {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .about-me-list {
   list-style: inside;
 }
 .me-diploma-img {
-  width: 50%;
+  width: 100%;
   margin-top: 2rem;
 }
 </style>

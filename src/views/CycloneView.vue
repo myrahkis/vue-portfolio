@@ -1,18 +1,17 @@
 <script setup>
-import { onMounted } from "vue";
+import { watchEffect } from "vue";
 import { useUIStore } from "@/stores/UIStore";
+import { useI18n } from "vue-i18n";
 import DocLayout from "@/components/DocLayout.vue";
 
 const UIStore = useUIStore();
+const { tm } = useI18n({
+  useScope: "global",
+});
 
-onMounted(() => {
+watchEffect(() => {
   UIStore.setPayload({
-    text: [
-      "Лендинг для циклонных фильтров.",
-      "Стэк: Vue.js, imask;",
-      "Функционал: форма обратной связи;",
-      "Проект на github.",
-    ],
+    text: tm("projects.cyclone"),
   });
 });
 </script>
