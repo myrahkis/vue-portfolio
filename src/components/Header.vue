@@ -64,7 +64,7 @@ onBeforeUnmount(() => {
     <div class="site-nav-container">
       <div class="nav-wrapper">
         <img class="doc-icon" src="/src/assets/logo-doc.png" alt="" />
-        <div>
+        <div class="dropdowns-title">
           <p class="doc-name">{{ docNameStore.docName }}</p>
           <DropDownMenus />
         </div>
@@ -465,6 +465,7 @@ onBeforeUnmount(() => {
           :onSelect="textBgColorStore.setColor"
         />
       </div>
+      <div class="header-tool-mobile">Menu</div>
     </div>
     <Ruler :rotate="false" />
   </header>
@@ -491,6 +492,9 @@ onBeforeUnmount(() => {
 .nav-wrapper {
   display: flex;
   align-items: center;
+}
+.header-tool-mobile {
+  display: none;
 }
 
 .doc-icon {
@@ -570,6 +574,25 @@ onBeforeUnmount(() => {
 .more-btn {
   svg {
     color: var(--icons-color);
+  }
+}
+
+@media (max-width: 762px) {
+  .dropdowns-title {
+    display: flex;
+  }
+  .user-name {
+    display: none;
+  }
+  .drop-down-bg-text-color,
+  .drop-down-text-color,
+  .font-size-selector,
+  .drop-down-font,
+  .drop-down-width {
+    display: none;
+  }
+  .header-tool-mobile {
+    display: block;
   }
 }
 </style>

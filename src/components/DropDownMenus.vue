@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onBeforeUnmount, onMounted } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { useDarkThemeStore } from "@/stores/darkThemeStore";
 import { useDeleteSiteStore } from "@/stores/deleteSiteStore";
 import { useUIStore } from "@/stores/UIStore";
@@ -11,6 +11,9 @@ import Modal from "../../ui/Modal.vue";
 import SiteInfo from "./SiteInfo.vue";
 import Stats from "./Stats.vue";
 import HotKeys from "./HotKeys.vue";
+import HeaderDropdownMobile from "./HeaderDropdownMobile.vue";
+
+const mobileOpen = ref(false);
 
 const UIStore = useUIStore();
 const darkThemeStore = useDarkThemeStore();
@@ -136,26 +139,31 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <ul class="nav">
-    <li v-for="(btn, index) in menusBtns" :key="index" class="nav-elem">
-      <button
-        class="menu-btn u-tools-hover"
-        @click="UIStore.handleToggleMenu(index + 1)"
-      >
-        {{ btn.name }}
-      </button>
-      <ul v-if="UIStore.activeIndex === index + 1" class="submenu">
-        <li
-          v-for="(link, linkIdx) in btn.links"
-          :key="linkIdx"
-          class="link-item"
-          @click.stop="onLinkClick(link)"
+  <div class="dropdowns-container">
+    <ul :class="{ nav: true, mobile: mobileOpen }">
+      <li v-for="(btn, index) in menusBtns" :key="index" class="nav-elem">
+        <button
+          class="menu-btn u-tools-hover"
+          @click="UIStore.handleToggleMenu(index + 1)"
         >
-          {{ link.name }}
-        </li>
-      </ul>
-    </li>
-  </ul>
+          {{ btn.name }}
+        </button>
+        <ul v-if="UIStore.activeIndex === index + 1" class="submenu">
+          <li
+            v-for="(link, linkIdx) in btn.links"
+            :key="linkIdx"
+            class="link-item"
+            @click.stop="onLinkClick(link)"
+          >
+            {{ link.name }}
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <button class="mobile-header-menu" @click="mobileOpen = !mobileOpen">
+      Меню
+    </button>
+  </div>
   <Modal v-if="UIStore.modalOpen">
     <template #modal-content>
       <component :is="UIStore.modalContent" />
@@ -183,10 +191,35 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+.dropdowns-container {
+  position: relative;
+}
 .nav {
   display: flex;
   list-style: none;
   gap: 0.2rem;
+}
+
+.nav.mobile {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 1rem;
+  width: max-content;
+  background-color: var(--white);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  border-radius: 0.8rem;
+
+  li button {
+    color: var(--menu-text-color);
+  }
+}
+
+.mobile-header-menu {
+  display: none;
 }
 .nav-elem {
   position: relative;
@@ -224,5 +257,27 @@ onBeforeUnmount(() => {
 }
 .menu-btn {
   color: var(--text-color);
+}
+
+@media (max-width: 762px) {
+  .nav {
+    display: none;
+  }
+  .nav.mobile {
+    display: flex;
+    box-shadow: 0 0 1rem var(--menu-shadow-color);
+  }
+  .mobile-header-menu {
+    position: relative;
+    display: block;
+  }
+  .submenu {
+    top: 0;
+    right: 100%; /* <-- вместо left */
+    left: auto;
+    min-width: 150px;
+    color: var(--menu-text-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 }
 </style>

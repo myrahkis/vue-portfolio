@@ -206,4 +206,13 @@ const { t } = useI18n({
   transform: translateX(0);
   opacity: 1;
 }
+
+@media (max-width: 762px) {
+  .doc-container {
+    height: auto;
+    width: 95%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
 </style>

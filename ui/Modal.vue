@@ -41,7 +41,7 @@ const UIStore = useUIStore();
   z-index: 1000;
   width: 100%;
   height: 100vh;
-  background-color: var(--text-color-1);
+  background-color: #000000b3;
 }
 .modal-inner {
   position: absolute;
@@ -49,7 +49,7 @@ const UIStore = useUIStore();
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--white);
-  color: var(--text-color);
+  color: var(--text-color-modal);
   padding: 2rem 3rem;
   border-radius: 2rem;
   box-shadow: 0 0.5rem 2rem #00000062;
@@ -60,7 +60,11 @@ const UIStore = useUIStore();
   right: 1rem;
 
   svg {
-    color: var(--icons-color);
+    color: var(--text-color-modal);
+
+    &:hover {
+      color: var(--white);
+    }
   }
 }
 </style>
