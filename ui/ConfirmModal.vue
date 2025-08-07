@@ -1,4 +1,6 @@
 <script setup>
+import { useI18n } from "vue-i18n";
+
 const { actionText, message, isCancelBtn, confirmBtnText } = defineProps({
   actionText: String,
   message: { type: String, default: "" },
@@ -9,6 +11,10 @@ const { actionText, message, isCancelBtn, confirmBtnText } = defineProps({
   confirmBtnText: { type: String, default: "OK" },
 });
 const emit = defineEmits(["cancel", "confirm"]);
+
+const { t } = useI18n({
+  useScope: "global",
+});
 
 function onConfirm() {
   emit("confirm");
@@ -24,7 +30,7 @@ function onCancel() {
     <h3>{{ message }}</h3>
     <div class="btns-container">
       <button class="cancel-btn" @click="onCancel" v-if="isCancelBtn">
-        Отмена
+        {{ t("modals.deletion.btnTextCancel") }}
       </button>
       <button
         class="confirm-btn"

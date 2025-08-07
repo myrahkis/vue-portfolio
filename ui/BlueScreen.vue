@@ -1,16 +1,22 @@
-<script setup></script>
+<script setup>
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({
+  useScope: "global",
+});
+</script>
 
 <template>
   <div class="death-screen">
     <h1>:(</h1>
     <p>
-      У сайта проблема и его нужно перезагрузить. <br />
-      Жаль, что так случилось. Произошла неизвестная ошибка.
+      {{ t("common.blueScreen.p1") }} <br />
+      {{ t("common.blueScreen.p2") }}
     </p>
     <div class="qr-wrapper">
       <img class="qr-code" src="/src/assets/QR_code.png" alt="" />
       <p>
-        Пройдите по QR-коду, чтобы получить больше информации касательно ошибки.
+        {{ t("common.blueScreen.p3") }}
       </p>
     </div>
   </div>
@@ -33,7 +39,7 @@
   }
 
   p {
-    width: 50%;
+    width: 55%;
     font-size: 2rem;
   }
 }

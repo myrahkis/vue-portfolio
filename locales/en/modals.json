@@ -1,0 +1,30 @@
+{
+  "stats": {
+    "heading": "My statistics",
+    "subHeading1": "Frontend stack",
+    "subHeading2": "Most used languages"
+  },
+  "hotKeys": {
+    "heading": "Hot keys",
+    "keys1": "Revert",
+    "keys2": "Repeat",
+    "keys3": "Delete"
+  },
+  "info": {
+    "heading": "Information",
+    "p1": "The portfolio is made in google document style",
+    "p2": "Stack: Vue.js (Pinia, Vue Router)",
+    "p3": "Icons taken from svgrepo"
+  },
+  "linkCopy": {
+    "heading": "The link was successfully copied!"
+  },
+  "deletion": {
+    "heading": "Site deletion",
+    "subHeading1": "Are you sure?",
+    "subHeading2": "Why...",
+    "btnTextConfirm1": "Yes",
+    "btnTextConfirm2": "Delete it anyways",
+    "btnTextCancel": "Cancel"
+  }
+}

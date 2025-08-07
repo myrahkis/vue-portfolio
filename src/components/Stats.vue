@@ -1,4 +1,6 @@
 <script setup>
+import { useI18n } from "vue-i18n";
+
 const toolsStack = [
   {
     name: "Vue.js (Vuex, Pinia, Vue Router)",
@@ -33,14 +35,18 @@ const toolsStack = [
     icon: "/scss-icon.svg",
   },
 ];
+
+const { t } = useI18n({
+  useScope: "global",
+});
 </script>
 
 <template>
   <div>
-    <h2>Моя статистика</h2>
+    <h2>{{ t("modals.stats.heading") }}</h2>
     <div class="info-container">
       <div class="row-container">
-        <h3>Фронтенд стэк</h3>
+        <h3>{{ t("modals.stats.subHeading1") }}</h3>
         <ul class="tools-container">
           <li
             v-for="(tool, index) in toolsStack"
@@ -52,7 +58,7 @@ const toolsStack = [
         </ul>
       </div>
       <div class="row-container">
-        <h3>Наиболее используемые языки</h3>
+        <h3>{{ t("modals.stats.subHeading2") }}</h3>
         <img class="lang-stats-img" src="/src/assets/langStats.png" alt="" />
       </div>
     </div>

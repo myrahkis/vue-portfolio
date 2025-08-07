@@ -1,12 +1,27 @@
-<script setup></script>
+<script setup>
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({
+  useScope: "global",
+});
+</script>
 
 <template>
   <div class="hot-keys-container">
-    <h2>Быстрые клавиши</h2>
+    <h2>{{ t("modals.hotKeys.heading") }}</h2>
     <ul class="keys-list">
-      <li><span>Отмена</span><span>Ctrl + Z</span></li>
-      <li><span>Повтор</span><span>Ctrl + Shift + Z</span></li>
-      <li><span>Удалить</span><span>Delete</span></li>
+      <li>
+        <span>{{ t("modals.hotKeys.keys1") }}</span
+        ><span>Ctrl + Z</span>
+      </li>
+      <li>
+        <span>{{ t("modals.hotKeys.keys2") }}</span
+        ><span>Ctrl + Shift + Z</span>
+      </li>
+      <li>
+        <span>{{ t("modals.hotKeys.keys3") }}</span
+        ><span>Delete</span>
+      </li>
     </ul>
   </div>
 </template>
@@ -14,6 +29,7 @@
 <style scoped>
 .hot-keys-container {
   padding: 0 2rem;
+  min-width: 25rem;
 }
 .keys-list {
   list-style: none;

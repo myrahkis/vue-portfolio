@@ -111,7 +111,7 @@ async function copyLinkHandle() {
   try {
     const url = window.location.href;
     await navigator.clipboard.writeText(url);
-    await UIStore.confirmDialog("Ссылка успешно скопирована!", "", false);
+    await UIStore.confirmDialog(t("modals.linkCopy.heading"), "", false);
   } catch (err) {
     console.error("Ошибка при копировании:", err);
   }

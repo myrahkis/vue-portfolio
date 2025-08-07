@@ -38,5 +38,10 @@
   "chat": "Chat",
   "cyclone": "Cyclone",
   "friendlyPokerClub": "Friendly Poker Club",
-  "aboutMe": "About me"
+  "aboutMe": "About me",
+  "blueScreen": {
+    "p1": "Site ran into a problem and needs to be reloaded.",
+    "p2": "How unfortunate that it came to this. An unknown error occurred.",
+    "p3": "To access further details regarding the error scan the QR code."
+  }
 }

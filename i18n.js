@@ -10,6 +10,8 @@ import ruProjects from "./locales/ru/projects.json";
 import enProjects from "./locales/en/projects.json";
 import ruAboutMe from "./locales/ru/aboutMe.json";
 import enAboutMe from "./locales/en/aboutMe.json";
+import ruModals from "./locales/ru/modals.json";
+import enModals from "./locales/en/modals.json";
 
 export const i18n = createI18n({
   legacy: false,
@@ -23,6 +25,7 @@ export const i18n = createI18n({
       tooltips: ruTooltips,
       projects: ruProjects,
       aboutMe: ruAboutMe,
+      modals: ruModals,
     },
     en: {
       common: enCommon,
@@ -30,6 +33,7 @@ export const i18n = createI18n({
       tooltips: enTooltips,
       projects: enProjects,
       aboutMe: enAboutMe,
+      modals: enModals,
     },
   },
 });

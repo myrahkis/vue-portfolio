@@ -1,0 +1,30 @@
+{
+  "stats": {
+    "heading": "Моя статистика",
+    "subHeading1": "Фронтенд стэк",
+    "subHeading2": "Наиболее используемые языки"
+  },
+  "hotKeys": {
+    "heading": "Быстрые клавиши",
+    "keys1": "Отмена",
+    "keys2": "Повтор",
+    "keys3": "Удалить"
+  },
+  "info": {
+    "heading": "Информация",
+    "p1": "Портфолио сделано в стиле google document",
+    "p2": "Стэк: Vue.js (Pinia, Vue Router)",
+    "p3": "Иконки взяты с svgrepo"
+  },
+  "linkCopy": {
+    "heading": "Ссылка успешно скопирована!"
+  },
+  "deletion": {
+    "heading": "Удаление сайта",
+    "subHeading1": "Точно?",
+    "subHeading2": "За что...",
+    "btnTextConfirm1": "Да",
+    "btnTextConfirm2": "Все равно удалить",
+    "btnTextCancel": "Отмена"
+  }
+}
