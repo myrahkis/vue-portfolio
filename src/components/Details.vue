@@ -107,7 +107,6 @@ const UIStore = useUIStore();
     top: auto;
     bottom: 1.1%;
     left: 2.5%;
-    width: 30%;
   }
   .details-info {
     color: var(--icons-color);
