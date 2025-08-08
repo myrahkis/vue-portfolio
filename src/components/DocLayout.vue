@@ -17,7 +17,8 @@ const fontSizeStore = useFontSizeStore();
 
 <style>
 .inner-doc-wrapper {
-  padding: 5rem 16rem;
+  padding: clamp(2rem, calc(-0.143rem + 0.357vw), 5rem)
+    clamp(3rem, calc(-3.286rem + 1.339vw), 16rem);
 }
 
 .project-preview {

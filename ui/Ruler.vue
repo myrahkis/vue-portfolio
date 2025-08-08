@@ -177,4 +177,20 @@ const { rotate } = defineProps({ rotate: Boolean });
   left: 1.3rem;
   top: 0.8rem;
 }
+
+@media (max-width: 762px) {
+  .ruler {
+    width: 100%;
+    height: 1.2rem;
+    margin: 0 auto;
+
+    --unit: 8px;
+  }
+  .ruler-container.vertical {
+    width: 1.9rem;
+  }
+  .ruler .labels span::before {
+    font-size: 0.8rem;
+  }
+}
 </style>

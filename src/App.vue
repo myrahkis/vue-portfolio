@@ -211,8 +211,13 @@ const { t } = useI18n({
   .doc-container {
     height: auto;
     width: 95%;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .details-btn {
+    top: auto;
+    bottom: 3%;
+    left: 5%;
   }
 }
 </style>

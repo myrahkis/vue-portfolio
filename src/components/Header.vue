@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onBeforeUnmount, onMounted } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { useDocNameStore } from "@/stores/docNameStore";
 import { useFontsStore } from "@/stores/fontsStore";
@@ -9,11 +9,11 @@ import { useTextColorStore } from "@/stores/textColorStore";
 import { useTextBgColorStore } from "@/stores/textBgColorStore";
 import { getActivePinia } from "pinia";
 import { useUIStore } from "@/stores/UIStore";
+import { useI18n } from "vue-i18n";
 import Ruler from "../../ui/Ruler.vue";
 import DropDownMenus from "./DropDownMenus.vue";
 import DropDownMenu from "../../ui/DropDownMenu.vue";
 import ColorPicker from "../../ui/ColorPicker.vue";
-import { useI18n } from "vue-i18n";
 
 const route = useRoute();
 
@@ -30,6 +30,8 @@ const undo = () => pinia.undo();
 const redo = () => pinia.redo();
 const canUndo = computed(() => pinia._undoRedo.past.length > 0);
 const canRedo = computed(() => pinia._undoRedo.future.length > 0);
+
+const toolsMobileOpen = ref(false);
 
 function handleKeydownRedoUndo(event) {
   const key = event.key.toLowerCase();
@@ -264,208 +266,239 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
-    <div class="doc-tools-container">
-      <div>
-        <button
-          :title="t('tooltips.revert')"
-          class="cancel-btn u-tools-hover"
-          @click="undo"
-          :disabled="!canUndo"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            width="1.5rem"
-            height="1.5rem"
+    <div class="tools-container">
+      <div :class="{ 'doc-tools-container': true, mobile: toolsMobileOpen }">
+        <div>
+          <button
+            :title="t('tooltips.revert')"
+            class="cancel-btn u-tools-hover"
+            @click="undo"
+            :disabled="!canUndo"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              width="1.5rem"
+              height="1.5rem"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0" />
 
-            <g
-              id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
 
-            <g id="SVGRepo_iconCarrier">
-              <g>
-                <path fill="none" d="M 0 0 h 24 v 24 H 0 Z" />
-                <path
-                  d="M 5.828 7 l 2.536 2.536 L 6.95 10.95 L 2 6 l 4.95 -4.95 l 1.414 1.414 L 5.828 5 H 13 a 8 8 0 1 1 0 16 H 4 v -2 h 9 a 6 6 0 1 0 0 -12 H 5.828 Z"
-                />
-              </g>
-            </g>
-          </svg>
-        </button>
-        <button
-          :title="t('tooltips.repeat')"
-          class="repeat-btn u-tools-hover"
-          @click="redo"
-          :disabled="!canRedo"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            width="1.5rem"
-            height="1.5rem"
-          >
-            <g id="SVGRepo_bgCarrier" stroke-width="0" />
-
-            <g
-              id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-
-            <g id="SVGRepo_iconCarrier">
-              <g>
-                <path fill="none" d="M 0 0 h 24 v 24 H 0 Z" />
-                <path
-                  d="M 18.172 7 H 11 a 6 6 0 1 0 0 12 h 9 v 2 h -9 a 8 8 0 1 1 0 -16 h 7.172 l -2.536 -2.536 L 17.05 1.05 L 22 6 l -4.95 4.95 l -1.414 -1.414 L 18.172 7 Z"
-                />
-              </g>
-            </g>
-          </svg>
-        </button>
-      </div>
-      <div class="drop-down-width u-tools-hover">
-        <DropDownMenu
-          :index="6"
-          :open="UIStore.activeIndex === 6"
-          @toggle="UIStore.handleToggleMenu"
-          v-model="widthsStore.selectedWidth"
-          :options="widthsStore.options"
-        />
-      </div>
-      <div class="drop-down-font u-tools-hover">
-        <DropDownMenu
-          :index="7"
-          :open="UIStore.activeIndex === 7"
-          @toggle="UIStore.handleToggleMenu"
-          v-model="fontsStore.selectedFont"
-          :options="fontsStore.fontsFamilies"
-          label-key="name"
-          value-key="family"
-        />
-      </div>
-      <div class="font-size-selector">
-        <button
-          class="less-btn u-tools-hover"
-          @click="fontSizeStore.decreaseSize"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            width="1.8rem"
-            height="1.8rem"
-          >
-            <g id="SVGRepo_bgCarrier" stroke-width="0" />
-            <g
-              id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <g id="SVGRepo_iconCarrier">
-              <title />
-              <g id="Complete">
-                <g id="minus">
-                  <line
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    x1="4"
-                    y1="12"
-                    x2="20"
-                    y2="12"
+              <g id="SVGRepo_iconCarrier">
+                <g>
+                  <path fill="none" d="M 0 0 h 24 v 24 H 0 Z" />
+                  <path
+                    d="M 5.828 7 l 2.536 2.536 L 6.95 10.95 L 2 6 l 4.95 -4.95 l 1.414 1.414 L 5.828 5 H 13 a 8 8 0 1 1 0 16 H 4 v -2 h 9 a 6 6 0 1 0 0 -12 H 5.828 Z"
                   />
                 </g>
               </g>
-            </g>
-          </svg>
-        </button>
-        <span>{{ fontSizeStore.selectedSize }}</span>
-        <button
-          class="more-btn u-tools-hover"
-          @click="fontSizeStore.increaseSize"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            width="1.8rem"
-            height="1.8rem"
+            </svg>
+          </button>
+          <button
+            :title="t('tooltips.repeat')"
+            class="repeat-btn u-tools-hover"
+            @click="redo"
+            :disabled="!canRedo"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              width="1.5rem"
+              height="1.5rem"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0" />
 
-            <g
-              id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
 
-            <g id="SVGRepo_iconCarrier">
-              <title />
-              <g id="Complete">
-                <g id="add-2" data-name="add">
-                  <g>
+              <g id="SVGRepo_iconCarrier">
+                <g>
+                  <path fill="none" d="M 0 0 h 24 v 24 H 0 Z" />
+                  <path
+                    d="M 18.172 7 H 11 a 6 6 0 1 0 0 12 h 9 v 2 h -9 a 8 8 0 1 1 0 -16 h 7.172 l -2.536 -2.536 L 17.05 1.05 L 22 6 l -4.95 4.95 l -1.414 -1.414 L 18.172 7 Z"
+                  />
+                </g>
+              </g>
+            </svg>
+          </button>
+        </div>
+        <div class="drop-down-width u-tools-hover">
+          <DropDownMenu
+            :index="6"
+            :open="UIStore.activeIndex === 6"
+            @toggle="UIStore.handleToggleMenu"
+            v-model="widthsStore.selectedWidth"
+            :options="widthsStore.options"
+          />
+        </div>
+        <div class="drop-down-font u-tools-hover">
+          <DropDownMenu
+            :index="7"
+            :open="UIStore.activeIndex === 7"
+            @toggle="UIStore.handleToggleMenu"
+            v-model="fontsStore.selectedFont"
+            :options="fontsStore.fontsFamilies"
+            label-key="name"
+            value-key="family"
+          />
+        </div>
+        <div class="font-size-selector">
+          <button
+            class="less-btn u-tools-hover"
+            @click="fontSizeStore.decreaseSize"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              width="1.8rem"
+              height="1.8rem"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0" />
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <g id="SVGRepo_iconCarrier">
+                <title />
+                <g id="Complete">
+                  <g id="minus">
                     <line
                       fill="none"
                       stroke="currentColor"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
-                      x1="12"
-                      y1="19"
-                      x2="12"
-                      y2="5"
-                    />
-                    <line
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      x1="5"
+                      x1="4"
                       y1="12"
-                      x2="19"
+                      x2="20"
                       y2="12"
                     />
                   </g>
                 </g>
               </g>
-            </g>
-          </svg>
-        </button>
+            </svg>
+          </button>
+          <span>{{ fontSizeStore.selectedSize }}</span>
+          <button
+            class="more-btn u-tools-hover"
+            @click="fontSizeStore.increaseSize"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              width="1.8rem"
+              height="1.8rem"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+              <g id="SVGRepo_iconCarrier">
+                <title />
+                <g id="Complete">
+                  <g id="add-2" data-name="add">
+                    <g>
+                      <line
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        x1="12"
+                        y1="19"
+                        x2="12"
+                        y2="5"
+                      />
+                      <line
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        x1="5"
+                        y1="12"
+                        x2="19"
+                        y2="12"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </button>
+        </div>
+        <div class="drop-down-text-color u-tools-hover">
+          <ColorPicker
+            :index="8"
+            :open="UIStore.activeIndex === 8"
+            @toggle="UIStore.handleToggleMenu"
+            :title="t('tooltips.textColor')"
+            :icon="'A'"
+            :colors="textColorStore.colors"
+            :selectedColor="textColorStore.selectedColor"
+            :onSelect="textColorStore.setColor"
+          />
+        </div>
+        <div class="drop-down-bg-text-color u-tools-hover">
+          <ColorPicker
+            :index="9"
+            :open="UIStore.activeIndex === 9"
+            @toggle="UIStore.handleToggleMenu"
+            :title="t('tooltips.textBgColor')"
+            :icon="'B'"
+            :colors="textBgColorStore.colors"
+            :selectedColor="textBgColorStore.selectedColor"
+            :onSelect="textBgColorStore.setColor"
+          />
+        </div>
       </div>
-      <div class="drop-down-text-color u-tools-hover">
-        <ColorPicker
-          :index="8"
-          :open="UIStore.activeIndex === 8"
-          @toggle="UIStore.handleToggleMenu"
-          :title="t('tooltips.textColor')"
-          :icon="'A'"
-          :colors="textColorStore.colors"
-          :selectedColor="textColorStore.selectedColor"
-          :onSelect="textColorStore.setColor"
-        />
-      </div>
-      <div class="drop-down-bg-text-color u-tools-hover">
-        <ColorPicker
-          :index="9"
-          :open="UIStore.activeIndex === 9"
-          @toggle="UIStore.handleToggleMenu"
-          :title="t('tooltips.textBgColor')"
-          :icon="'B'"
-          :colors="textBgColorStore.colors"
-          :selectedColor="textBgColorStore.selectedColor"
-          :onSelect="textBgColorStore.setColor"
-        />
-      </div>
-      <div class="header-tool-mobile">Menu</div>
+      <button
+        class="header-tool-mobile"
+        @click="toolsMobileOpen = !toolsMobileOpen"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 15 15"
+          width="2.5rem"
+          height="2.5rem"
+          transform="rotate(90)"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+          <g id="SVGRepo_iconCarrier">
+            <path
+              clip-rule="evenodd"
+              fill="#000000"
+              fill-rule="evenodd"
+              d="M 8.625 2.5 C 8.625 3.12132 8.12132 3.625 7.5 3.625 C 6.87868 3.625 6.375 3.12132 6.375 2.5 C 6.375 1.87868 6.87868 1.375 7.5 1.375 C 8.12132 1.375 8.625 1.87868 8.625 2.5 Z M 8.625 7.5 C 8.625 8.12132 8.12132 8.625 7.5 8.625 C 6.87868 8.625 6.375 8.12132 6.375 7.5 C 6.375 6.87868 6.87868 6.375 7.5 6.375 C 8.12132 6.375 8.625 6.87868 8.625 7.5 Z M 7.5 13.625 C 8.12132 13.625 8.625 13.1213 8.625 12.5 C 8.625 11.8787 8.12132 11.375 7.5 11.375 C 6.87868 11.375 6.375 11.8787 6.375 12.5 C 6.375 13.1213 6.87868 13.625 7.5 13.625 Z"
+            />
+          </g>
+        </svg>
+      </button>
     </div>
     <Ruler :rotate="false" />
   </header>
@@ -544,6 +577,9 @@ onBeforeUnmount(() => {
   padding: 0 0.6rem;
 }
 
+.tools-container {
+  position: relative;
+}
 .doc-tools-container {
   display: flex;
   align-items: center;
@@ -554,6 +590,19 @@ onBeforeUnmount(() => {
   padding: 0.5rem 1.5rem;
   border-radius: 2rem;
   margin-bottom: 1rem;
+}
+.doc-tools-container.mobile {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: max-content;
+  background-color: var(--white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .font-size-selector {
@@ -584,15 +633,22 @@ onBeforeUnmount(() => {
   .user-name {
     display: none;
   }
-  .drop-down-bg-text-color,
-  .drop-down-text-color,
-  .font-size-selector,
-  .drop-down-font,
-  .drop-down-width {
+  .tools-container {
+    width: fit-content;
+  }
+  .doc-tools-container {
     display: none;
+  }
+  .doc-tools-container.mobile {
+    display: flex;
+    /* display: grid;
+    grid-template-columns: 0.5fr 0.5fr; */
   }
   .header-tool-mobile {
     display: block;
+  }
+  .user-ava {
+    padding: 0.6rem;
   }
 }
 </style>

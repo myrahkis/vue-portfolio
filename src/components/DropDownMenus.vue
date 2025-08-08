@@ -11,7 +11,6 @@ import Modal from "../../ui/Modal.vue";
 import SiteInfo from "./SiteInfo.vue";
 import Stats from "./Stats.vue";
 import HotKeys from "./HotKeys.vue";
-import HeaderDropdownMobile from "./HeaderDropdownMobile.vue";
 
 const mobileOpen = ref(false);
 
@@ -161,7 +160,42 @@ onBeforeUnmount(() => {
       </li>
     </ul>
     <button class="mobile-header-menu" @click="mobileOpen = !mobileOpen">
-      Меню
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="-0.5 0 25 25"
+        width="2.5rem"
+        height="2.5rem"
+      >
+        <path
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="M 19 3.32001 H 16 C 14.8954 3.32001 14 4.21544 14 5.32001 V 8.32001 C 14 9.42458 14.8954 10.32 16 10.32 H 19 C 20.1046 10.32 21 9.42458 21 8.32001 V 5.32001 C 21 4.21544 20.1046 3.32001 19 3.32001 Z"
+        />
+        <path
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="M 8 3.32001 H 5 C 3.89543 3.32001 3 4.21544 3 5.32001 V 8.32001 C 3 9.42458 3.89543 10.32 5 10.32 H 8 C 9.10457 10.32 10 9.42458 10 8.32001 V 5.32001 C 10 4.21544 9.10457 3.32001 8 3.32001 Z"
+        />
+        <path
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="M 19 14.32 H 16 C 14.8954 14.32 14 15.2154 14 16.32 V 19.32 C 14 20.4246 14.8954 21.32 16 21.32 H 19 C 20.1046 21.32 21 20.4246 21 19.32 V 16.32 C 21 15.2154 20.1046 14.32 19 14.32 Z"
+        />
+        <path
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="M 8 14.32 H 5 C 3.89543 14.32 3 15.2154 3 16.32 V 19.32 C 3 20.4246 3.89543 21.32 5 21.32 H 8 C 9.10457 21.32 10 20.4246 10 19.32 V 16.32 C 10 15.2154 9.10457 14.32 8 14.32 Z"
+        />
+      </svg>
     </button>
   </div>
   <Modal v-if="UIStore.modalOpen">
@@ -273,7 +307,7 @@ onBeforeUnmount(() => {
   }
   .submenu {
     top: 0;
-    right: 100%; /* <-- вместо left */
+    right: 100%;
     left: auto;
     min-width: 150px;
     color: var(--menu-text-color);
