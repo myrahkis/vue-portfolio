@@ -57,6 +57,7 @@ const UIStore = useUIStore();
   color: var(--icons-color);
   padding: 1.2rem;
   border-radius: 50%;
+  width: fit-content;
   transition: all 0.2s;
 
   &:hover {
@@ -70,5 +71,58 @@ const UIStore = useUIStore();
   gap: 1rem;
   padding: 1.2rem 1rem;
   color: var(--icons-color);
+}
+
+@media (max-width: 762px) {
+  .details-container {
+    display: flex;
+    flex-direction: column-reverse;
+    height: fit-content;
+    top: auto;
+    bottom: 1.1%;
+    left: 2.5%;
+    width: 70%;
+  }
+  .details-info {
+    color: var(--icons-color);
+    background-color: var(--bg-color);
+    border-bottom-right-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+  }
+  .back-btn {
+    background-color: var(--bg-color);
+    border-radius: 0;
+    border-bottom-right-radius: 1.5rem;
+
+    &:hover {
+      background-color: var(--tools-hover-color);
+    }
+  }
+}
+@media (max-width: 500px) {
+  .details-container {
+    display: flex;
+    flex-direction: column-reverse;
+    height: fit-content;
+    top: auto;
+    bottom: 1.1%;
+    left: 2.5%;
+    width: 30%;
+  }
+  .details-info {
+    color: var(--icons-color);
+    background-color: var(--bg-color);
+    border-bottom-right-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+  }
+  .back-btn {
+    background-color: var(--bg-color);
+    border-radius: 0;
+    border-bottom-right-radius: 1.5rem;
+
+    &:hover {
+      background-color: var(--tools-hover-color);
+    }
+  }
 }
 </style>

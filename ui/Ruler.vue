@@ -178,6 +178,11 @@ const { rotate } = defineProps({ rotate: Boolean });
   top: 0.8rem;
 }
 
+@media (max-width: 1200px) {
+  .ruler {
+    width: 80%;
+  }
+}
 @media (max-width: 762px) {
   .ruler {
     width: 100%;

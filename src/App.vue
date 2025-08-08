@@ -9,6 +9,7 @@ import Ruler from "../ui/Ruler.vue";
 import Header from "./components/Header.vue";
 import SideBar from "./components/SideBar.vue";
 import Details from "./components/Details.vue";
+import { onMounted } from "vue";
 
 const deleteSiteStore = useDeleteSiteStore();
 const sideBarStore = useSideBarStore();
@@ -17,6 +18,12 @@ const UIStore = useUIStore();
 
 const { t } = useI18n({
   useScope: "global",
+});
+
+onMounted(() => {
+  if (window.innerWidth <= 762) {
+    sideBarStore.closeSideBar();
+  }
 });
 </script>
 
@@ -207,6 +214,16 @@ const { t } = useI18n({
   opacity: 1;
 }
 
+@media (max-width: 1200px) {
+  .doc-container {
+    width: 60%;
+  }
+}
+@media (max-width: 910px) {
+  .doc-container {
+    width: 70%;
+  }
+}
 @media (max-width: 762px) {
   .doc-container {
     height: auto;
@@ -217,7 +234,7 @@ const { t } = useI18n({
   .details-btn {
     top: auto;
     bottom: 3%;
-    left: 5%;
+    left: 6.5%;
   }
 }
 </style>
