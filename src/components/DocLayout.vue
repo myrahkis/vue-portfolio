@@ -31,6 +31,7 @@ const fontSizeStore = useFontSizeStore();
 @media (max-width: 762px) {
   .project-preview {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 
     iframe {
