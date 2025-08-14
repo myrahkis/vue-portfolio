@@ -11,14 +11,12 @@ const { t } = useI18n({
 <template>
   <aside class="side-header">
     <ul class="contacts-list">
-      <li class="u-tools-hover" :title="t('tooltips.telegram')">
+      <li class="tg-icon u-tools-hover" :title="t('tooltips.telegram')">
         <a href="https://t.me/myrahkis" target="_blank">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 32 32"
-            width="3.5rem"
-            height="3.5rem"
           >
             <circle fill="url(#paint0_linear_87_7225)" cx="16" cy="16" r="14" />
             <path
@@ -42,13 +40,11 @@ const { t } = useI18n({
           </svg>
         </a>
       </li>
-      <li class="u-tools-hover" title="Github">
+      <li class="icon u-tools-hover" title="Github">
         <a href="https://github.com/myrahkis" target="_blank">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
-            width="3rem"
-            height="3rem"
             version="1.1"
           >
             <defs></defs>
@@ -75,14 +71,12 @@ const { t } = useI18n({
           </svg>
         </a>
       </li>
-      <li class="u-tools-hover" :title="t('tooltips.email')">
+      <li class="email-icon u-tools-hover" :title="t('tooltips.email')">
         <a href="mailto:myrahkis@yandex.ru">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 192 192"
-            width="3.5rem"
-            height="3.5rem"
           >
             <path
               stroke="currentColor"
@@ -106,14 +100,15 @@ const { t } = useI18n({
           </svg>
         </a>
       </li>
-      <li class="u-tools-hover" :title="t('tooltips.reactPortfolio')">
+      <li
+        class="react-icon u-tools-hover"
+        :title="t('tooltips.reactPortfolio')"
+      >
         <a href="https://myrahkis.github.io/fridge-portfolio/" target="_blank">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             viewBox="0 0 512 512"
-            width="4rem"
-            height="4rem"
           >
             <g id="SVGRepo_bgCarrier" stroke-width="0" />
             <g
@@ -134,13 +129,7 @@ const { t } = useI18n({
       </li>
     </ul>
     <button class="hide-side-header u-tools-hover" @click="onClose">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        width="3rem"
-        height="3rem"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <path
           fill="currentColor"
           d="M 9.71069 18.2929 C 10.1012 18.6834 10.7344 18.6834 11.1249 18.2929 L 16.0123 13.4006 C 16.7927 12.6195 16.7924 11.3537 16.0117 10.5729 L 11.1213 5.68254 C 10.7308 5.29202 10.0976 5.29202 9.70708 5.68254 C 9.31655 6.07307 9.31655 6.70623 9.70708 7.09676 L 13.8927 11.2824 C 14.2833 11.6729 14.2833 12.3061 13.8927 12.6966 L 9.71069 16.8787 C 9.32016 17.2692 9.32016 17.9023 9.71069 18.2929 Z"
@@ -187,6 +176,33 @@ const { t } = useI18n({
   }
 }
 
+.icon,
+.tg-icon,
+.email-icon,
+.react-icon {
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.icon a svg,
+.hide-side-header svg {
+  width: clamp(2.5rem, 2vw + 1rem, 3rem);
+  height: clamp(2.5rem, 2vw + 1rem, 3rem);
+}
+
+.react-icon a svg {
+  width: clamp(3.5rem, 2.5vw + 1rem, 4rem);
+  height: clamp(3.5rem, 2.5vw + 1rem, 4rem);
+}
+
+.tg-icon a svg,
+.email-icon a svg {
+  width: clamp(3rem, 2.3vw + 1rem, 3.5rem);
+  height: clamp(3rem, 2.3vw + 1rem, 3.5rem);
+}
+
 .details-slide-enter-active,
 .details-slide-leave-active {
   transition: transform 0.3s ease, opacity 0.2s ease;
@@ -200,5 +216,11 @@ const { t } = useI18n({
 .details-slide-leave-from {
   transform: translateX(0);
   opacity: 1;
+}
+
+@media (max-width: 762px) {
+  .contacts-list li {
+    padding: 0.5rem;
+  }
 }
 </style>

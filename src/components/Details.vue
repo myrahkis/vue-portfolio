@@ -73,14 +73,14 @@ const UIStore = useUIStore();
   color: var(--icons-color);
 }
 
-@media (max-width: 762px) {
+@media (max-width: 910px) {
   .details-container {
     display: flex;
     flex-direction: column-reverse;
     height: fit-content;
     top: auto;
     bottom: 1.1%;
-    left: 2.5%;
+    left: 2%;
     width: 70%;
   }
   .details-info {
@@ -106,7 +106,7 @@ const UIStore = useUIStore();
     height: fit-content;
     top: auto;
     bottom: 1.1%;
-    left: 2.5%;
+    left: 2%;
   }
   .details-info {
     color: var(--icons-color);

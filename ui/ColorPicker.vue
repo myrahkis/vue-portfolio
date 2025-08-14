@@ -20,7 +20,9 @@ function toggleOpen() {
 <template>
   <div class="color-picker-container">
     <div class="color-picker" @click="toggleOpen" :title="title">
-      <p>{{ icon }}</p>
+      <span>
+        <slot name="icon"></slot>
+      </span>
       <div
         class="color-preview"
         :style="{ backgroundColor: selectedColor }"
@@ -87,6 +89,10 @@ function toggleOpen() {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  span svg {
+    color: var(--icons-color);
+  }
 }
 .color-preview {
   width: 2.5rem;

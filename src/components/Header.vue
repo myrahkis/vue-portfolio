@@ -454,7 +454,9 @@ onBeforeUnmount(() => {
             :colors="textColorStore.colors"
             :selectedColor="textColorStore.selectedColor"
             :onSelect="textColorStore.setColor"
-          />
+          >
+            <template #icon>A</template>
+          </ColorPicker>
         </div>
         <div class="drop-down-bg-text-color u-tools-hover">
           <ColorPicker
@@ -462,11 +464,32 @@ onBeforeUnmount(() => {
             :open="UIStore.activeIndex === 9"
             @toggle="UIStore.handleToggleMenu"
             :title="t('tooltips.textBgColor')"
-            :icon="'B'"
             :colors="textBgColorStore.colors"
             :selectedColor="textBgColorStore.selectedColor"
             :onSelect="textBgColorStore.setColor"
-          />
+          >
+            <template #icon>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="Layer_1"
+                fill="currentColor"
+                viewBox="0 0 512 512"
+                width="1.8rem"
+                height="1.8rem"
+                xmlns:xml="http://www.w3.org/XML/1998/namespace"
+                xml:space="preserve"
+                version="1.1"
+              >
+                <g>
+                  <g>
+                    <path
+                      d="M 497.453 131.515 l -93.576 -93.576 c -19.393 -19.394 -50.786 -19.397 -70.182 0 L 99.758 271.88 c -2.265 2.265 -3.915 5.3 -4.546 8.562 l -22.39 111.949 L 4.846 460.369 C 0.114 465.1 -1.3 472.215 1.259 478.396 c 2.561 6.18 8.592 10.211 15.283 10.211 h 93.576 c 4.388 0 8.595 -1.744 11.696 -4.846 l 21.19 -21.19 l 112.057 -22.411 c 3.217 -0.643 6.218 -2.288 8.453 -4.525 L 450.66 248.49 c 0.002 -0.002 0.003 -0.003 0.005 -0.006 c 0.002 -0.002 0.003 -0.003 0.006 -0.005 l 46.782 -46.782 C 516.847 182.302 516.851 150.911 497.453 131.515 Z M 103.266 455.523 H 56.477 l 31.584 -31.584 l 23.395 23.394 L 103.266 455.523 Z M 140.286 429.376 l -34.267 -34.267 l 15.596 -77.979 l 96.652 96.651 L 140.286 429.376 Z M 321.999 330.365 l -46.787 -46.788 l 93.577 -93.576 l 46.787 46.787 L 321.999 330.365 Z M 474.06 178.304 l -35.091 35.091 l -58.485 -58.485 c -6.458 -6.459 -16.932 -6.46 -23.394 0 L 240.122 271.88 c -3.102 3.102 -4.846 7.309 -4.846 11.696 s 1.742 8.594 4.846 11.696 l 58.485 58.485 l -46.787 46.788 l -116.97 -116.969 L 357.09 61.335 c 6.464 -6.464 16.929 -6.466 23.395 0 l 93.576 93.576 C 480.526 161.377 480.526 171.839 474.06 178.304 Z"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </template>
+          </ColorPicker>
         </div>
       </div>
       <button
@@ -492,7 +515,7 @@ onBeforeUnmount(() => {
           <g id="SVGRepo_iconCarrier">
             <path
               clip-rule="evenodd"
-              fill="#000000"
+              fill="currentColor"
               fill-rule="evenodd"
               d="M 8.625 2.5 C 8.625 3.12132 8.12132 3.625 7.5 3.625 C 6.87868 3.625 6.375 3.12132 6.375 2.5 C 6.375 1.87868 6.87868 1.375 7.5 1.375 C 8.12132 1.375 8.625 1.87868 8.625 2.5 Z M 8.625 7.5 C 8.625 8.12132 8.12132 8.625 7.5 8.625 C 6.87868 8.625 6.375 8.12132 6.375 7.5 C 6.375 6.87868 6.87868 6.375 7.5 6.375 C 8.12132 6.375 8.625 6.87868 8.625 7.5 Z M 7.5 13.625 C 8.12132 13.625 8.625 13.1213 8.625 12.5 C 8.625 11.8787 8.12132 11.375 7.5 11.375 C 6.87868 11.375 6.375 11.8787 6.375 12.5 C 6.375 13.1213 6.87868 13.625 7.5 13.625 Z"
             />
@@ -528,6 +551,10 @@ onBeforeUnmount(() => {
 }
 .header-tool-mobile {
   display: none;
+
+  svg {
+    color: var(--icons-color);
+  }
 }
 
 .doc-icon {
@@ -598,6 +625,7 @@ onBeforeUnmount(() => {
   left: 100%;
   width: max-content;
   background-color: var(--white);
+  color: var(--menu-text-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   flex-direction: column;
@@ -622,7 +650,7 @@ onBeforeUnmount(() => {
 .less-btn,
 .more-btn {
   svg {
-    color: var(--icons-color);
+    color: var(--white);
   }
 }
 
@@ -649,6 +677,20 @@ onBeforeUnmount(() => {
   }
   .user-ava {
     padding: 0.6rem;
+  }
+  .cancel-btn,
+  .repeat-btn,
+  .less-btn,
+  .more-btn {
+    svg {
+      color: var(--menu-text-color);
+    }
+
+    &:hover {
+      svg {
+        color: var(--white);
+      }
+    }
   }
 }
 </style>

@@ -17,7 +17,7 @@ const fontSizeStore = useFontSizeStore();
 
 <style>
 .inner-doc-wrapper {
-  padding: clamp(2rem, calc(-0.143rem + 0.357vw), 5rem)
+  padding: clamp(1.5rem, calc(-0.143rem + 0.357vw), 5rem)
     clamp(3rem, calc(-3.286rem + 1.339vw), 16rem);
 }
 
@@ -25,6 +25,30 @@ const fontSizeStore = useFontSizeStore();
   iframe {
     width: 100%;
     aspect-ratio: 9 / 13;
+  }
+}
+
+@media (max-width: 762px) {
+  .project-preview {
+    display: flex;
+    justify-content: center;
+
+    iframe {
+      width: 90%;
+      aspect-ratio: 9 / 16;
+    }
+  }
+}
+@media (max-width: 512px) {
+  /* .inner-doc-wrapper {
+    padding: clamp(1.5rem, calc(-0.143rem + 0.357vw), 5rem)
+      clamp(1rem, calc(-3.286rem + 1.339vw), 5rem);
+  } */
+
+  .project-preview {
+    iframe {
+      width: 100%;
+    }
   }
 }
 </style>

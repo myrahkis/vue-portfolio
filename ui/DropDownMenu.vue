@@ -80,7 +80,7 @@ function selectOption(opt) {
   top: 0.6em;
   right: -0.25em;
   border: 4px solid transparent;
-  border-color: var(--text-color-1) transparent transparent transparent;
+  border-color: var(--white) transparent transparent transparent;
 }
 
 .items {
@@ -105,5 +105,19 @@ function selectOption(opt) {
 .item:hover {
   background-color: var(--tools-hover-color);
   color: var(--text-color);
+}
+
+@media (max-width: 762px) {
+  .selected::after {
+    content: "";
+    position: absolute;
+    top: 0.6em;
+    right: -0.25em;
+    border: 4px solid transparent;
+    border-color: var(--menu-text-color) transparent transparent transparent;
+  }
+  .selected:hover::after {
+    border-color: var(--white) transparent transparent transparent;
+  }
 }
 </style>

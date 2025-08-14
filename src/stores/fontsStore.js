@@ -5,11 +5,12 @@ export const useFontsStore = defineStore("fonts", () => {
   const fontsFamilies = [
     { name: "Open Sans", family: '"Open Sans", sans-serif' },
     {
-      name: "Bitcount Prop Single",
-      family: '"Bitcount Prop Single", system-ui',
+      name: "Geologica",
+      family: '"Geologica", sans-serif',
     },
-    { name: "Intel One Mono", family: '"Intel One Mono", monospace' },
-    { name: "Playfair Display", family: '"Playfair Display", serif' },
+    { name: "IBM Plex Mono", family: '"IBM Plex Mono", monospace' },
+    { name: "Libertinus Sans", family: '"Libertinus Sans", sans-serif' },
+    { name: "Pacifico", family: '"Pacifico", cursive' },
   ];
 
   const selectedFont = ref(fontsFamilies[0].family);

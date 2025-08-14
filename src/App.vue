@@ -33,8 +33,8 @@ onMounted(() => {
     class="layout-grid"
     :style="{
       gridTemplateColumns: sideBarStore.isSideBarOpen
-        ? '2rem auto 8rem'
-        : '2rem auto 0',
+        ? 'var(--grid-open)'
+        : 'var(--grid-closed)',
     }"
   >
     <Header />
@@ -193,9 +193,17 @@ onMounted(() => {
   box-shadow: 0 0 0.5rem var(--shadow-color-1);
   transition: all 0.2s;
 
+  svg {
+    color: var(--menu-text-color);
+  }
+
   &:hover {
     background-color: var(--bg-color-1);
     padding: 1rem 1.8rem 1rem 1.3rem;
+
+    svg {
+      color: var(--text-color);
+    }
   }
 }
 
@@ -223,6 +231,11 @@ onMounted(() => {
   .doc-container {
     width: 70%;
   }
+  .details-btn {
+    top: auto;
+    bottom: 3.5%;
+    left: 4%;
+  }
 }
 @media (max-width: 762px) {
   .doc-container {
@@ -232,7 +245,6 @@ onMounted(() => {
     margin-bottom: 1rem;
   }
   .details-btn {
-    top: auto;
     bottom: 3%;
     left: 6.5%;
   }
