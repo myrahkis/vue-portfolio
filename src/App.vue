@@ -113,7 +113,7 @@ onMounted(() => {
   position: relative;
   display: grid;
   grid-template-rows: auto 1fr;
-  height: 100vh;
+  max-height: 100vh;
   transition: grid-template-columns 0.3s ease;
 }
 .main-container {
