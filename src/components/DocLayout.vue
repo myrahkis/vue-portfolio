@@ -17,8 +17,9 @@ const fontSizeStore = useFontSizeStore();
 
 <style>
 .inner-doc-wrapper {
+  min-height: 100vh;
   padding: clamp(1.5rem, calc(-0.143rem + 0.357vw), 5rem)
-    clamp(3rem, calc(-3.286rem + 1.339vw), 16rem);
+    clamp(1.8rem, calc(1rem + 3vw),4rem);
 }
 
 .project-preview {
@@ -32,7 +33,7 @@ const fontSizeStore = useFontSizeStore();
   .project-preview {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 
     iframe {
       width: 90%;

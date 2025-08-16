@@ -650,7 +650,7 @@ onBeforeUnmount(() => {
 .less-btn,
 .more-btn {
   svg {
-    color: var(--white);
+    color: var(--text-color);
   }
 }
 

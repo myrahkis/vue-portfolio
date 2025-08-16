@@ -87,7 +87,7 @@ button {
 
   &:hover {
     background-color: var(--tools-hover-color);
-    color: var(--white);
+    /* color: var(--text-color); */
   }
 }
 
@@ -95,5 +95,10 @@ button {
   :root {
     --grid-open: 2rem auto 5.5rem;
     --grid-closed: 2rem auto 0;
+  }
+  .u-tools-hover {
+    &:hover {
+      color: var(--text-color);
+    }
   }
 }

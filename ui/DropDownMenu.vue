@@ -80,7 +80,7 @@ function selectOption(opt) {
   top: 0.6em;
   right: -0.25em;
   border: 4px solid transparent;
-  border-color: var(--white) transparent transparent transparent;
+  border-color: var(--text-color) transparent transparent transparent;
 }
 
 .items {

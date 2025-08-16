@@ -113,20 +113,20 @@ onMounted(() => {
   position: relative;
   display: grid;
   grid-template-rows: auto 1fr;
-  max-height: 100vh;
+  height: 100dvh;
   transition: grid-template-columns 0.3s ease;
 }
 .main-container {
+  overflow-y: auto;
   position: relative;
   display: grid;
   justify-items: center;
-  overflow-y: auto;
   grid-column: 2 / 3;
   grid-row: 2;
   scrollbar-width: thin;
 }
 .doc-container {
-  height: auto;
+  /* height: auto; */
   width: 55%;
   margin-top: 2rem;
   margin-bottom: 2rem;
