@@ -87,8 +87,32 @@ button {
 
   &:hover {
     background-color: var(--tools-hover-color);
-    /* color: var(--text-color); */
   }
+}
+
+.details-link {
+  position: relative;
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: var(--ememphasis-color);
+  }
+}
+.details-link::after {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: var(--ememphasis-color);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s;
+}
+.details-link:hover::after,
+.details-link:active::after {
+  transform: scaleX(1);
 }
 
 @media (max-width: 762px) {

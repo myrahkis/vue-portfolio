@@ -5,24 +5,24 @@
     "Стэк: Nuxt.js, pdfjs-dist;",
     "Функционал: расписание турниров, подгрузка данных для нескольких городов, определение города по IP;",
     "В планах: страница галереи и страница с правилами покера.",
-    "Проект на github."
+    "Проект на <a class='details-link' href='https://github.com/myrahkis/friendly-poker-club' target='_blank'>github</a>."
   ],
   "simples": [
     "Мой первый проект на Vue.js.",
     "Стэк: Vue.js (VueRouter, немного Vuex), mathjs, api wiki;",
     "Функционал: todo лист; страница постов, подгружаемых по api; поиск wiki страниц; калькулятор.",
-    "Проект на github."
+    "Проект на <a class='details-link' href='https://github.com/myrahkis/simples-w-vue' target='_blank'>github</a>."
   ],
   "cyclone": [
     "Лендинг для циклонных фильтров.",
     "Стэк: Vue.js, imask;",
     "Функционал: форма обратной связи;",
-    "Проект на github."
+    "Проект на <a class='details-link' href='https://github.com/myrahkis/cyclone-landing-page' target='_blank'>github</a>."
   ],
   "chat": [
     "Чат.",
     "Стэк: Vue.js (Vuex и VueRouter), websockets;",
     "Функционал: ws сервер лежит на Render и ему нужно пару минут, чтобы проснуться;",
-    "Проект на github."
+    "Проект на <a class='details-link' href='https://github.com/myrahkis/real-time-chat' target='_blank'>github</a>."
   ]
 }

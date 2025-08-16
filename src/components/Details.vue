@@ -32,9 +32,8 @@ const UIStore = useUIStore();
       <p
         v-for="(sentence, index) in UIStore?.detailsPayload?.text"
         :key="index"
-      >
-        {{ sentence }}
-      </p>
+        v-html="sentence"
+      ></p>
     </div>
   </aside>
 </template>

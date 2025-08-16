@@ -12,7 +12,7 @@ import SiteInfo from "./SiteInfo.vue";
 import Stats from "./Stats.vue";
 import HotKeys from "./HotKeys.vue";
 
-const mobileOpen = ref(false);
+// const mobileOpen = ref(false);
 
 const UIStore = useUIStore();
 const darkThemeStore = useDarkThemeStore();
@@ -139,7 +139,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="dropdowns-container">
-    <ul :class="{ nav: true, mobile: mobileOpen }">
+    <ul :class="{ nav: true, mobile: UIStore.activeIndexMobile === 1 }">
       <li v-for="(btn, index) in menusBtns" :key="index" class="nav-elem">
         <button
           class="menu-btn u-tools-hover"
@@ -159,7 +159,7 @@ onBeforeUnmount(() => {
         </ul>
       </li>
     </ul>
-    <button class="mobile-header-menu" @click="mobileOpen = !mobileOpen">
+    <button class="mobile-header-menu" @click="UIStore.handleToggleMobile(1)">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

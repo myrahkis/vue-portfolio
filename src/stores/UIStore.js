@@ -4,6 +4,7 @@ import ConfirmModal from "../../ui/ConfirmModal.vue";
 
 export const useUIStore = defineStore("UIStore", () => {
   const activeIndex = ref(null);
+  const activeIndexMobile = ref(null);
   const modalOpen = ref(false);
   const confirmOpen = ref(false);
   const modalContent = shallowRef(null);
@@ -12,6 +13,9 @@ export const useUIStore = defineStore("UIStore", () => {
 
   function handleToggleMenu(idx) {
     activeIndex.value = activeIndex.value === idx ? null : idx;
+  }
+  function handleToggleMobile(idx) {
+    activeIndexMobile.value = activeIndexMobile.value === idx ? null : idx;
   }
   function openModal(content) {
     modalOpen.value = true;
@@ -58,7 +62,9 @@ export const useUIStore = defineStore("UIStore", () => {
 
   return {
     activeIndex,
+    activeIndexMobile,
     handleToggleMenu,
+    handleToggleMobile,
     modalOpen,
     openModal,
     confirmOpen,

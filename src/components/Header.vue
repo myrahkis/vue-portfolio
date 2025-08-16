@@ -31,7 +31,7 @@ const redo = () => pinia.redo();
 const canUndo = computed(() => pinia._undoRedo.past.length > 0);
 const canRedo = computed(() => pinia._undoRedo.future.length > 0);
 
-const toolsMobileOpen = ref(false);
+// const toolsMobileOpen = ref(false);
 
 function handleKeydownRedoUndo(event) {
   const key = event.key.toLowerCase();
@@ -267,7 +267,12 @@ onBeforeUnmount(() => {
       </div>
     </div>
     <div class="tools-container">
-      <div :class="{ 'doc-tools-container': true, mobile: toolsMobileOpen }">
+      <div
+        :class="{
+          'doc-tools-container': true,
+          mobile: UIStore.activeIndexMobile === 2,
+        }"
+      >
         <div>
           <button
             :title="t('tooltips.revert')"
@@ -492,10 +497,7 @@ onBeforeUnmount(() => {
           </ColorPicker>
         </div>
       </div>
-      <button
-        class="header-tool-mobile"
-        @click="toolsMobileOpen = !toolsMobileOpen"
-      >
+      <button class="header-tool-mobile" @click="UIStore.handleToggleMobile(2)">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

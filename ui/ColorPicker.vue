@@ -46,7 +46,7 @@ function toggleOpen() {
         :class="color === 'transparent' ? 'transparent-cell' : 'color-cell'"
         @click="
           onSelect(color);
-          emit('toggle', index);
+          toggleOpen();
         "
       >
         <p v-if="color === 'transparent'">

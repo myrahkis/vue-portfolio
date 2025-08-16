@@ -5,25 +5,24 @@
     "Stack: Nuxt.js, pdfjs-dist;",
     "Features: tournaments schedule, loading data for multiple cities, city decoding by user's IP;",
     "In future: gallery page and page with poker rules.",
-    "Project on github."
+    "Project on <a class='details-link' href='https://github.com/myrahkis/friendly-poker-club' target='_blank'>github</a>."
   ],
   "simples": [
     "My first project w/ Vue.js.",
     "Stack: Vue.js (VueRouter, a bit of Vuex), mathjs, api wiki;",
     "Features: todo list; infinite scroll posts; wiki pages search; calculator.",
-    "Project on github."
+    "Project on <a class='details-link' href='https://github.com/myrahkis/simples-w-vue' target='_blank'>github</a>."
   ],
   "cyclone": [
     "Landing page for cyclone filters.",
     "Stack: Vue.js, imask;",
     "Features: contact-us form;",
-    "Project on github."
+    "Project on <a class='details-link' href='https://github.com/myrahkis/cyclone-landing-page' target='_blank'>github</a>."
   ],
   "chat": [
     "Chat.",
     "Stack: Vue.js (Vuex and VueRouter), websockets;",
     "Features: hosted project is most luckily asleep due to inactivity (ws server is hosted on Render), so it takes a couple of minutes for it to come back up and work;",
-    "Project on github."
-  ],
-  "aboutMe": []
+    "Project on <a class='details-link' href='https://github.com/myrahkis/real-time-chat' target='_blank'>github</a>."
+  ]
 }
