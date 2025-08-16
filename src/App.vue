@@ -112,7 +112,7 @@ onMounted(() => {
 .layout-grid {
   position: relative;
   display: grid;
-  grid-template-rows: 0.23fr auto;
+  grid-template-rows: auto 1fr;
   height: 100vh;
   transition: grid-template-columns 0.3s ease;
 }

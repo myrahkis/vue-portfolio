@@ -41,10 +41,10 @@ const fontSizeStore = useFontSizeStore();
   }
 }
 @media (max-width: 512px) {
-  /* .inner-doc-wrapper {
+  .inner-doc-wrapper {
     padding: clamp(1.5rem, calc(-0.143rem + 0.357vw), 5rem)
       clamp(1rem, calc(-3.286rem + 1.339vw), 5rem);
-  } */
+  }
 
   .project-preview {
     iframe {
