@@ -126,7 +126,6 @@ onMounted(() => {
   scrollbar-width: thin;
 }
 .doc-container {
-  /* height: auto; */
   width: 55%;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -138,8 +137,8 @@ onMounted(() => {
 }
 .details-btn {
   position: fixed;
-  top: 21%;
-  left: 2.4%;
+  top: 15rem;
+  left: 3.5rem;
   z-index: 3;
   display: flex;
   align-items: center;

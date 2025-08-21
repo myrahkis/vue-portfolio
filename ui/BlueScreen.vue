@@ -56,4 +56,41 @@ const { t } = useI18n({
 .qr-code {
   width: 8rem;
 }
+
+@media (max-width: 1100px) {
+  .death-screen {
+    justify-content: center;
+    padding: clamp(2rem, calc(2rem + 3.5vw), 9rem)
+      clamp(2rem, calc(2rem + 6vw), 12rem);
+
+    p {
+      width: 100%;
+      font-size: clamp(1rem, calc(1rem + 2vw), 2rem);
+    }
+  }
+  .qr-wrapper {
+    p {
+      font-size: clamp(1rem, calc(0.9rem + 1.5vw), 1.5rem);
+    }
+  }
+  .qr-code {
+    width: clamp(6rem, calc(1rem + 4vw), 8rem);
+  }
+}
+@media (max-width: 640px) {
+  .death-screen {
+    h1 {
+      font-size: clamp(8rem, calc(1rem + 2vw), 12rem);
+    }
+
+    p {
+      font-size: clamp(1rem, calc(0.8rem + 2vw), 1.5rem);
+    }
+  }
+  .qr-wrapper {
+    p {
+      font-size: clamp(0.8rem, calc(0.9rem + 1vw), 1.5rem);
+    }
+  }
+}
 </style>
