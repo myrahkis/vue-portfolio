@@ -50,23 +50,16 @@ onMounted(() => {
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 24 24"
         width="2rem"
         height="2rem"
+        fill="currentColor"
+        viewBox="0 0 24 24"
       >
         <g data-name="Layer 2">
-          <g data-name="arrow-ios-back">
-            <rect
-              opacity="0"
-              transform="rotate(90 12 12)"
-              width="24"
-              height="24"
-            />
-            <path
-              d="M 13.83 19 a 1 1 0 0 1 -0.78 -0.37 l -4.83 -6 a 1 1 0 0 1 0 -1.27 l 5 -6 a 1 1 0 0 1 1.54 1.28 L 10.29 12 l 4.32 5.36 a 1 1 0 0 1 -0.78 1.64 Z"
-            />
-          </g>
+          <path
+            d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64Z"
+            data-name="arrow-ios-back"
+          />
         </g>
       </svg>
     </button>
@@ -93,14 +86,13 @@ onMounted(() => {
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 17 17"
         width="2rem"
         height="2rem"
-        version="1.1"
+        viewBox="0 0 17 17"
       >
         <path
           fill="currentColor"
-          d="M 16 2 v 2 h -11 v -2 h 11 Z M 5 9 h 11 v -2 h -11 v 2 Z M 5 14 h 11 v -2 h -11 v 2 Z M 2 2 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 7 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z M 2 12 c -0.552 0 -1 0.447 -1 1 s 0.448 1 1 1 s 1 -0.447 1 -1 s -0.448 -1 -1 -1 Z"
+          d="M16 2v2H5V2h11ZM5 9h11V7H5v2Zm0 5h11v-2H5v2ZM2 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"
         />
       </svg>
       <div class="tooltip-text">{{ t("common.descBtn") }}</div>

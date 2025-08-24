@@ -10,23 +10,15 @@ const UIStore = useUIStore();
       <button class="close-btn u-tools-hover" @click="UIStore.closeModal">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
           width="1.8rem"
           height="1.8rem"
+          fill="none"
+          viewBox="0 0 24 24"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0" />
-          <g
-            id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+          <path
+            fill="currentColor"
+            d="M20.746 3.329a1 1 0 0 0-1.415 0l-7.294 7.294-7.294-7.294a1 1 0 1 0-1.414 1.414l7.294 7.294-7.294 7.294a1 1 0 0 0 1.414 1.415l7.294-7.295 7.294 7.295a1 1 0 0 0 1.415-1.415l-7.295-7.294 7.295-7.294a1 1 0 0 0 0-1.414Z"
           />
-          <g id="SVGRepo_iconCarrier">
-            <path
-              fill="currentColor"
-              d="M 20.7457 3.32851 C 20.3552 2.93798 19.722 2.93798 19.3315 3.32851 L 12.0371 10.6229 L 4.74275 3.32851 C 4.35223 2.93798 3.71906 2.93798 3.32854 3.32851 C 2.93801 3.71903 2.93801 4.3522 3.32854 4.74272 L 10.6229 12.0371 L 3.32856 19.3314 C 2.93803 19.722 2.93803 20.3551 3.32856 20.7457 C 3.71908 21.1362 4.35225 21.1362 4.74277 20.7457 L 12.0371 13.4513 L 19.3315 20.7457 C 19.722 21.1362 20.3552 21.1362 20.7457 20.7457 C 21.1362 20.3551 21.1362 19.722 20.7457 19.3315 L 13.4513 12.0371 L 20.7457 4.74272 C 21.1362 4.3522 21.1362 3.71903 20.7457 3.32851 Z"
-            />
-          </g>
         </svg>
       </button>
       <slot name="modal-content"></slot>
