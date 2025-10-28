@@ -19,10 +19,11 @@
     "Функционал: форма обратной связи;",
     "Проект на <a class='details-link' href='https://github.com/myrahkis/cyclone-landing-page' target='_blank'>github</a>."
   ],
-  "chat": [
-    "Чат.",
-    "Стэк: Vue.js (Vuex и VueRouter), websockets;",
-    "Функционал: ws сервер лежит на Render и ему нужно пару минут, чтобы проснуться;",
-    "Проект на <a class='details-link' href='https://github.com/myrahkis/real-time-chat' target='_blank'>github</a>."
+  "planto": [
+    "Planto.",
+    "Стэк: Vue.js (Vuex, anime.js)",
+    "Описание: верстка по макету <a class='details-link' href='https://www.figma.com/community/file/1341057411255052611' target='_blank'>Dsingr</a>, анимации с anime.js",
+    "Функционал: корзина",
+    "Проект на <a class='details-link' href='https://github.com/myrahkis/planto' target='_blank'>github</a>."
   ]
 }

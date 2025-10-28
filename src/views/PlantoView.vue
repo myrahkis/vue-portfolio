@@ -11,7 +11,7 @@ const { tm } = useI18n({
 
 watchEffect(() => {
   UIStore.setPayload({
-    text: tm("projects.chat"),
+    text: tm("projects.planto"),
   });
 });
 </script>
@@ -22,7 +22,7 @@ watchEffect(() => {
       <template #project>
         <iframe
           class="project-preview"
-          src="https://myrahkis.github.io/real-time-chat/"
+          src="https://myrahkis.github.io/planto/"
           frameborder="0"
         ></iframe>
       </template>

@@ -17,10 +17,10 @@ const router = createRouter({
       component: () => import("../views/SimplesView.vue"),
     },
     {
-      path: "/ws-chat",
-      name: "chat",
-      meta: { titleKey: "common.chat" },
-      component: () => import("../views/ChatView.vue"),
+      path: "/planto",
+      name: "planto.",
+      meta: { titleKey: "common.planto" },
+      component: () => import("../views/PlantoView.vue"),
     },
     {
       path: "/cyclone",

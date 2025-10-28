@@ -52,7 +52,7 @@ const menusBtns = computed(() => [
       { name: "FriendlyPokerClub", to: "/friendly-poker-club" },
       { name: "Simples", to: "/simples" },
       { name: "Cyclone", to: "/cyclone" },
-      { name: "Chat", to: "/ws-chat" },
+      { name: "Planto", to: "/planto" },
     ],
   },
   {
